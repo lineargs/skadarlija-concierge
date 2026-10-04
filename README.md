@@ -1,7 +1,7 @@
 # Skadarlija Concierge: Enterprise-Grade Agent Evaluation & Quality Gating
 
 [![Google ADK](https://img.shields.io/badge/Google%20ADK-v2.11.0-blue.svg)](https://github.com/google/adk)
-[![agents-cli](https://img.shields.io/badge/agents--cli-v1.1.0-4285F4.svg)](https://cloud.google.com/gemini-enterprise-agent-platform)
+[![agents-cli](https://img.shields.io/badge/agents--cli-v1.8.0-4285F4.svg)](https://cloud.google.com/gemini-enterprise-agent-platform)
 [![Gemini](https://img.shields.io/badge/Model-Gemini%203.8%20Flash-orange.svg)](https://cloud.google.com/vertex-ai)
 [![Eval Gate](https://img.shields.io/badge/CI%20Gate-Automated%20Regression%20Gate-green.svg)](scripts/eval_gate.py)
 

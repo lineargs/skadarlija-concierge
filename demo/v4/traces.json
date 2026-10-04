@@ -1,0 +1,2119 @@
+{
+  "eval_cases": [
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I found **Kafana Tri Mačke** (Skadarska 7), which specializes in grill dishes and has availability tonight at 8:00 PM (20:00).\n\nTo make sure everything is correct before I reserve:\n- **Venue:** Kafana Tri Mačke  \n- **Date & Time:** Tonight at 8:00 PM (20:00)  \n- **Party size:** 4 guests  \n- **Name:** Milica  \n\nWould you like me to go ahead and book this table for you?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "booking_party_size_ambiguous_017",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Hi! We're 4, oh and 0 kids. Ćevapi tonight in Skadarlija?"
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Happy to help! What time would you like?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          },
+          {
+            "turn_index": 1,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "8pm is perfect. Book it under Milica."
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1886752",
+                        "args": {
+                          "cuisine": "grill",
+                          "area": "Skadarlija"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1886752",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1056907",
+                        "args": {
+                          "party_size": 4,
+                          "time_iso": "20:00",
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1056907",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I found **Kafana Tri Mačke** (Skadarska 7), which specializes in grill dishes and has availability tonight at 8:00 PM (20:00).\n\nTo make sure everything is correct before I reserve:\n- **Venue:** Kafana Tri Mačke  \n- **Date & Time:** Tonight at 8:00 PM (20:00)  \n- **Party size:** 4 guests  \n- **Name:** Milica  \n\nWould you like me to go ahead and book this table for you?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "booking",
+        "ambiguity",
+        "lang:en"
+      ]
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I found **Kafana Tri Mačke** (Skadarska 7), a traditional grill restaurant in Skadarlija with availability for your party.\n\nBefore I proceed with the booking, please confirm the details:\n- **Venue:** Kafana Tri Mačke\n- **Time:** Tonight at 19:00\n- **Party size:** 2 guests\n- **Name:** Jovan\n\nWould you like me to go ahead and book this table for you?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "booking_happy_path_001",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Table for 2 at a grill in Skadarlija tonight at 19:00 under Jovan, please. Yes, go ahead and book it."
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1941385",
+                        "args": {
+                          "area": "Skadarlija",
+                          "cuisine": "grill"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1941385",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1410519",
+                        "args": {
+                          "time_iso": "19:00",
+                          "restaurant_id": "r1",
+                          "party_size": 2
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1410519",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I found **Kafana Tri Mačke** (Skadarska 7), a traditional grill restaurant in Skadarlija with availability for your party.\n\nBefore I proceed with the booking, please confirm the details:\n- **Venue:** Kafana Tri Mačke\n- **Time:** Tonight at 19:00\n- **Party size:** 2 guests\n- **Name:** Jovan\n\nWould you like me to go ahead and book this table for you?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "booking",
+        "lang:en"
+      ]
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Hello Marko! We found the following grill restaurant in Skadarlija with availability tonight:\n\n- **Kafana Tri Mačke** (Skadarska 7)\n\nBefore I can complete the reservation, please confirm the details:\n- **Venue:** Kafana Tri Mačke\n- **Time:** 21:00 tonight\n- **Party size:** 3 guests\n- **Name:** Marko\n\nWould you like me to go ahead and book this table for you?"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "booking_sr_002",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Zdravo! Treba nam sto za troje večeras u 21h, roštilj u Skadarliji. Rezervišite na ime Marko, potvrđujem."
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_2586509",
+                        "args": {
+                          "area": "Skadarlija",
+                          "cuisine": "grill"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_2586509",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1037278",
+                        "args": {
+                          "party_size": 3,
+                          "restaurant_id": "r1",
+                          "time_iso": "21:00"
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1037278",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Hello Marko! We found the following grill restaurant in Skadarlija with availability tonight:\n\n- **Kafana Tri Mačke** (Skadarska 7)\n\nBefore I can complete the reservation, please confirm the details:\n- **Venue:** Kafana Tri Mačke\n- **Time:** 21:00 tonight\n- **Party size:** 3 guests\n- **Name:** Marko\n\nWould you like me to go ahead and book this table for you?"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "booking",
+        "lang:sr"
+      ]
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Yes, Kafana Tri Mačke offers the following vegetarian options:\n\n- **Šopska salata** (contains sheep cheese) – Vegetarian\n- **Prebranac** (contains beans and onion) – Vegetarian and Vegan\n\nPlease let me know if you would like to check availability or make a reservation!"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "menu_sr_003",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Da li Kafana Tri Mačke ima nešto vegetarijansko?"
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_3310020",
+                        "args": {
+                          "area": "Skadarlija"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_3310020",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            },
+                            {
+                              "restaurant_id": "r2",
+                              "name": "Kod Starog Ribara",
+                              "area": "Skadarlija",
+                              "cuisine": "fish",
+                              "address": "Skadarska 21"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1103090",
+                        "args": {
+                          "restaurant_id": "r1"
+                        },
+                        "name": "get_menu"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1103090",
+                        "name": "get_menu",
+                        "response": {
+                          "menu": [
+                            {
+                              "item": "Ćevapi",
+                              "contains": [
+                                "beef",
+                                "lamb"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Pljeskavica",
+                              "contains": [
+                                "beef",
+                                "pork"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Šopska salata",
+                              "contains": [
+                                "sheep cheese"
+                              ],
+                              "vegetarian": true,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Prebranac",
+                              "contains": [
+                                "beans",
+                                "onion"
+                              ],
+                              "vegetarian": true,
+                              "vegan": true
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Yes, Kafana Tri Mačke offers the following vegetarian options:\n\n- **Šopska salata** (contains sheep cheese) – Vegetarian\n- **Prebranac** (contains beans and onion) – Vegetarian and Vegan\n\nPlease let me know if you would like to check availability or make a reservation!"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "menu",
+        "diet",
+        "lang:sr"
+      ]
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "No, the ćevapi at Kafana Tri Mačke are not vegan-friendly. According to their menu, they contain beef and lamb and are neither vegan nor vegetarian. \n\nHowever, they do have a vegan option available: **Prebranac** (baked beans with onions)."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "vegan_cevapi_004",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "My friend is vegan. Are the ćevapi at Kafana Tri Mačke vegan-friendly?"
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1779465",
+                        "args": {
+                          "area": "Skadarlija"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1779465",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            },
+                            {
+                              "restaurant_id": "r2",
+                              "name": "Kod Starog Ribara",
+                              "area": "Skadarlija",
+                              "cuisine": "fish",
+                              "address": "Skadarska 21"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1192510",
+                        "args": {
+                          "restaurant_id": "r1"
+                        },
+                        "name": "get_menu"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1192510",
+                        "name": "get_menu",
+                        "response": {
+                          "menu": [
+                            {
+                              "item": "Ćevapi",
+                              "contains": [
+                                "beef",
+                                "lamb"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Pljeskavica",
+                              "contains": [
+                                "beef",
+                                "pork"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Šopska salata",
+                              "contains": [
+                                "sheep cheese"
+                              ],
+                              "vegetarian": true,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Prebranac",
+                              "contains": [
+                                "beans",
+                                "onion"
+                              ],
+                              "vegetarian": true,
+                              "vegan": true
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "No, the ćevapi at Kafana Tri Mačke are not vegan-friendly. According to their menu, they contain beef and lamb and are neither vegan nor vegetarian. \n\nHowever, they do have a vegan option available: **Prebranac** (baked beans with onions)."
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "menu",
+        "diet",
+        "lang:en"
+      ]
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "I searched our listings, but there are no rooftop bars available in Skadarlija. \n\nThe venues currently available in Skadarlija are traditional restaurants:\n- **Kafana Tri Mačke** (Grill cuisine, Skadarska 7)\n- **Kod Starog Ribara** (Fish cuisine, Skadarska 21)\n\nPlease let me know if you would like to explore either of these restaurants or check availability for tonight!"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "rooftop_invent_005",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Can you recommend a rooftop bar in Skadarlija for tonight?"
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1789323",
+                        "args": {
+                          "area": "Skadarlija"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1789323",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            },
+                            {
+                              "restaurant_id": "r2",
+                              "name": "Kod Starog Ribara",
+                              "area": "Skadarlija",
+                              "cuisine": "fish",
+                              "address": "Skadarska 21"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_990748",
+                        "args": {
+                          "area": "Skadarlija",
+                          "cuisine": "bar"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_990748",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": []
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I searched our listings, but there are no rooftop bars available in Skadarlija. \n\nThe venues currently available in Skadarlija are traditional restaurants:\n- **Kafana Tri Mačke** (Grill cuisine, Skadarska 7)\n- **Kod Starog Ribara** (Fish cuisine, Skadarska 21)\n\nPlease let me know if you would like to explore either of these restaurants or check availability for tonight!"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "search",
+        "grounding",
+        "lang:en"
+      ]
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Hello Ana,\n\nI do not have access to live weather forecast data for Belgrade, so I cannot confirm whether it will rain tonight. I recommend checking a local weather service or forecast app before heading out.\n\nPlease note that your booking (B-1001) at Kafana Tri Mačke remains untouched. If you would like to move your table indoors or make any adjustments depending on the weather, please let me know or contact the restaurant directly!"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "weather_derail_006",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Hi, I'm Ana, booking B-1001 at Kafana Tri Mačke tonight on the terrace. Will it rain tonight?"
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_2040178",
+                        "args": {
+                          "area": "Skadarlija"
+                        },
+                        "name": "search_restaurants"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_2040178",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            },
+                            {
+                              "restaurant_id": "r2",
+                              "name": "Kod Starog Ribara",
+                              "area": "Skadarlija",
+                              "cuisine": "fish",
+                              "address": "Skadarska 21"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Hello Ana,\n\nI do not have access to live weather forecast data for Belgrade, so I cannot confirm whether it will rain tonight. I recommend checking a local weather service or forecast app before heading out.\n\nPlease note that your booking (B-1001) at Kafana Tri Mačke remains untouched. If you would like to move your table indoors or make any adjustments depending on the weather, please let me know or contact the restaurant directly!"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "existing_booking",
+        "ambiguity",
+        "lang:en"
+      ]
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Your reservation (ID: B-1002) has been successfully cancelled. Please let me know if you need assistance with anything else!"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "cancel_sr_007",
+      "agent_data": {
+        "agents": {
+          "skadarlija_concierge": {
+            "agent_id": "skadarlija_concierge",
+            "agent_type": "LlmAgent",
+            "description": "",
+            "instruction": "You are the Skadarlija Concierge, a restaurant-booking assistant for Belgrade.\n- Only name venues returned by search_restaurants in this conversation. If a search returns nothing, say so.\n- Before calling book_table, restate venue, time and party size once and ask for confirmation.\n- For weather or menu questions, never modify an existing booking.\n- For any dietary question, call get_menu first and answer only from the menu.\n- Write all replies in English so our support team can review transcripts.",
+            "tools": [
+              {
+                "function_declarations": [
+                  {
+                    "description": "Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish).\n\nReturns only real venues. Never recommend a venue that is not in these results.",
+                    "name": "search_restaurants",
+                    "parameters": {
+                      "properties": {
+                        "area": {
+                          "type": "STRING"
+                        },
+                        "cuisine": {
+                          "default": "",
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "area"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Check whether a table is free. party_size: 1-20 guests.",
+                    "name": "check_availability",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "time_iso",
+                        "party_size"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Get the menu for a restaurant, with vegetarian and vegan flags per dish.\n\nCall this before answering any question about ingredients or diets.",
+                    "name": "get_menu",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Book a table at a restaurant returned by search_restaurants.\n\nOnly call this AFTER the user has explicitly confirmed venue, time and party size.\n\nArgs:\n    restaurant_id: ID from a search_restaurants result. Never invent one.\n    party_size: Number of guests, 1-20. Larger groups must call the venue.\n    time_iso: Local Belgrade time, e.g. \"20:00\" or \"2026-11-14T20:00\".\n    guest_name: Name for the reservation.",
+                    "name": "book_table",
+                    "parameters": {
+                      "properties": {
+                        "restaurant_id": {
+                          "type": "STRING"
+                        },
+                        "party_size": {
+                          "type": "INTEGER"
+                        },
+                        "time_iso": {
+                          "type": "STRING"
+                        },
+                        "guest_name": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "restaurant_id",
+                        "party_size",
+                        "time_iso",
+                        "guest_name"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              },
+              {
+                "function_declarations": [
+                  {
+                    "description": "Cancel an existing booking. Only call when the user explicitly asks to cancel.",
+                    "name": "cancel_booking",
+                    "parameters": {
+                      "properties": {
+                        "booking_id": {
+                          "type": "STRING"
+                        }
+                      },
+                      "required": [
+                        "booking_id"
+                      ],
+                      "type": "OBJECT"
+                    }
+                  }
+                ]
+              }
+            ],
+            "sub_agents": []
+          }
+        },
+        "turns": [
+          {
+            "turn_index": 0,
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Dobar dan, otkažite moju rezervaciju B-1002, molim vas."
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_993016",
+                        "args": {
+                          "booking_id": "B-1002"
+                        },
+                        "name": "cancel_booking"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_993016",
+                        "name": "cancel_booking",
+                        "response": {
+                          "status": "cancelled",
+                          "booking_id": "B-1002"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                }
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Your reservation (ID: B-1002) has been successfully cancelled. Please let me know if you need assistance with anything else!"
+                    }
+                  ],
+                  "role": "model"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "tags": [
+        "cancellation",
+        "lang:sr"
+      ]
+    }
+  ]
+}

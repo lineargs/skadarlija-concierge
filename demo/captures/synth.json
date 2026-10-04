@@ -1,0 +1,1965 @@
+{
+  "eval_cases": [
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Sto je uspešno rezervisan!\n\nEvo detalja rezervacije:\n- **Broj rezervacije:** B-1003\n- **Restoran:** Kafana Tri Mačke\n- **Vreme:** Petak u 20:30\n- **Broj osoba:** 6\n- **Ime:** Marko\n\nŽelim vam lep provod i prijatnu večeru u Skadarliji! Ako zatreba još nešto, tu sam."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "8cf25360-ab26-48dd-b2b9-af72ef9e16a3",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "e-7935598c-a479-4500-9c5f-8005cbb0c0aa",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Brate, I need a place for dinner this Friday in Skadarlija. We want some good grill."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:43:30.432361Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1996729",
+                        "args": {
+                          "area": "Skadarlija",
+                          "cuisine": "grill"
+                        },
+                        "name": "search_restaurants"
+                      },
+                      "thought_signature": "AY89a1_VNRczVb2oYyhGBKvtBhSeGE2xkzexEL1kVczvsfRxAodgamjyuTw8NOY7TjBG_pXLRGCKebyYEDgzrifksK2UeOVO_OHbtRXVmUCbOED3TzejDm3srB5fq6XIvVIfFxlIkb7Fn9rEmIdVS0GNEJ6Gy18gBfGeaZWjrTRVpFw2mMALUztWEiQ5j9XLBgONfykVawETY3CuxAPoujhJGPoI6PIk6dg8PAQpRZHJUK8vYGAERpvysh8qSGseY2DUWdUNO8EK1DlMdk8IT8QpDYLoBrsqdlRw2mwY1R3isaKyanpEV7ftpMQzI3XXNANFqOvfj-xavGwXszhUxax6b6tkKayuHUA2m7-Ut_PmhtzcFAQ2OS0l0RAmBN0b3M1e3fdIF89Yyi8VqHp2K8IF5PHSfLL3c3DZMbC5w7xlQrsu6t6XHbh5nETbzuV6kimtnVxN59mqDOKhoqBdNgc2PXPqpGYgRKN6XXaEBMJS1tfoTKXVV6sBQReJWGjEBv0YMpV9XKO4M6t48jRDQyJFe2i2D-fYQNYxNhJvyIm78qgwKirFyfNp_bnoEhbSjifXTQpkdm_evvG3SA4KxMqHXGjQ3T7bdprkk9303629TDu-aHT0sygZmO1_KxbhsFb-r7NbNrpVsthv5FStOgBQA90pZeSxLzLBNyuPN0OJ3v8OXOgfkeTAiwns5bmxvm2P5yyAm8kORg9Wawrep9uYkLbZ8risREtO3C0_UG4O2pPqRQVW2xts_6IYZbfooNQONdjAL6zO4rIPH4CKTnwWvVF3scQkMhzLMAM1pAyQI4faQUE__AarxXnUCS-uH4s="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:43:30.432361Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1996729",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:43:30.432361Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I found a great spot for you in Skadarlija:\n\n* **Kafana Tri Mačke** (Skadarska 7) – traditional grill cuisine.\n\nWhat time are you thinking of going this Friday, and how many people will be in your party? If you'd like, I can check table availability and book it for you!",
+                      "thought_signature": "AY89a186HHGXcxaXEaDhwg-FLjBFY2lTnpt9wXka6fzOqTsKbVGul2wXCZJb7WeD2AqJMV0NaCbJEKjb9LH8JJniXfibMxVqcME-rbyu_wzOHz_ShmwTqn6OhRVkb3JDIOXE1DBS_UeTgqfuUTLeqYlupUPhVodOcS6rMnPt6eWoHJKCK1StgY_-d-ymHW3Po5wNXM20vXUubPI6wi-8Gm6wzO1447SocPVcQyLgZE30FXihvdCWTi6yZkrJsEK345QNi0xxsR7LbqZTw6RgMm0OBJhQ2wMcgIfHuGoO4Ja2noedq-okkVH7CP15xJFhsKkuRKJ8xvYAVWj4Kn129XTqaLkLqm62Mm1n1dUey_T_I3MHUI03ULZdOZwMyP96bAZdzB6y-b2Lm3aDERRJjK6mWBSBmjJKZePxBmCa61acVC7I9jRwNWybVMY_Rpb8ixktrGi4XQARYasFG2BJ42CUF94rrFg3HevkLkCJmR3PWAOwoAL3qj2_S44q14KxrCqmmAiEiCpeJhuxKLkmvRaTEjpiZTNqnrFoqTJWvYvoqSpj-IUlKM4SgvzezzAPIry2H5IAoPPbVOi3AcRPDXSAin_-nsW3BgICs4hg3710HS8Q9idI5tjdmGypZsua-qXl9TJOV81z7x6G6XRID1QzfqiHa4W2aoOvkn1sbH8tBedeC5CW1pSO9uxxxY7HvP6F8HAJfwr5mfqT9QvvLS42kh8qA7I3sOrK9gUlTqoJUXEzD8ie2mGCHm4n9sTG8jzg9ZjQOl3hRVgTV-SIKLz56z0HmeMOsMqlCR5WaQg4tVG5vjEtltD1d51zVlhEG0Hps_dM5aNIv3gSagvzswdZIlIePgFQp7BTqYUkegjn"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:43:30.432361Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 1,
+            "turn_id": "e-421cf914-cd29-48df-a4fa-f85deef2f62b",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Please check availability for 4 people at 20:00."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:43:37.532855Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1720947",
+                        "args": {
+                          "party_size": 4,
+                          "time_iso": "20:00",
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a18YfDt-N2RekqTz2XE_9VY4bxj9HJ52HsIkFxXoBDMBZuaP9cK6XbB_W24C9rX_ozvEryEB6P4p2-XitBJRFh8imzs2mFuYyO81RYH-gS8fJPYVLncIf-Tvfi58OXW_DsMlnQ9GE0o3gNavgi_0y9j0ThNymXPSALScJM6hbxZEtOk0sStP0hejfWUxyoqBJlKEagtiFlwg_YcwN75QDF5YtGOtAtBuUplH6sO_M3f1M4VlZMsA1r3YMayxuIy5EcLvsf3v0fcoypvsXRaqUsh5NI59a9drLeqd2UZ_6f30_damleVXNzAyRewjLoCAG7xBcN8ZUW0A9qmG39IV2p_lXXpK0EIHb4gFpzA384bQqpmlsjpmh5ucSpxdtKZpWuoLmFcRRCqRhRF44iE8pxG_zlFhC1FZiF2cyVVmCkTadYsiFixN4kfOvEX05EsaIz_bdL_mzZ4I4zkTliquB6USWRc_ON_jbnjbfqHIQFV_uUrou2IH76ukEeD5utJ1eFOzV27-8w4tdGfI3PEC1bud3j_2ydo9nRnFn14pycuJeO8s8OIsxTr5VRkNCCsrlk-JVJT--Z0TWRUhIuJb4yzt5U87mZt4PbnkZ-JsVElGzBTV7TcvjuWyDRjjrYTdZ83ioqajBmgW"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:43:37.532855Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1720947",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:43:37.532855Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "A table is available for **4 people** at **20:00 this Friday** at **Kafana Tri Mačke**!\n\nWould you like me to go ahead and book this for you? If so, please confirm the details (venue: Kafana Tri Mačke, time: Friday at 20:00, party size: 4) and let me know your name for the reservation.",
+                      "thought_signature": "AY89a18gYiRfJFfHkdzy8TJk13q754NdXHqWn73PVsi0MI5-EOp_3lEAY_xDze-UJ3q9o6eKxCIE55q9i0c8YhzxJmpZJ_DluHGPmj_REevkhJjzaLSXp5Y48agfWTQTQtQSyTp65PxJo7J5X1hd_-1CLxRjYoKMupcl90PLwtTCoILpoljAYEfrn977XaosYMuuWJdsr4rZk2lpbAxg1fSUN_v6CUK1yTcCV3af82b_-uH_EHmFht9PYNFBkIKFpJll3E27H9ApKAJPPr8hN76T2pS1dG5bTRIuit7zLIx6NR-2NtDcmsf8ry47lGpLm4D7jt-8JcQVgit_DVqKcgUluGu3PX5av_ogTfuw0RGATHnuiaUrYHAxwi5tpxBSj5L96PIrdnC28TmTfyhJQb84-ka32j92AkSVXghq2YTSfPo24lvrjWW5Tse3cm6PfBH5zZK_dofUxWP4X1iBXPud8ypcM2NPK5BT_shF-eQ_EBKCdmr4w_uRxdbo-RNKXjMwQAg6JDgsqd3t7ap53ZrzPVMVuFrJyKQFBLT4zO5UY-jJTSOEaG0uakrfUXmptJWjXjkslnfoNYRP4vT098d6kCOXZz1OeV_45loFJqJcus1N_gtc8RXAPVIOMLrgjERTxgH4L_SU8Jmgk2gbFBoFkXTMmo7pBGjXNtkgKuVJFvd26HGcnk0OcHvGeDKnsBRV72rirg=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:43:37.532855Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 2,
+            "turn_id": "e-d0896a3d-54bc-483c-bee8-dffa309ce94b",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "My name is Marko."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:43:52.736959Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Thanks, Marko!\n\nTo make sure everything is correct before I place the reservation, please confirm:\n- **Venue:** Kafana Tri Mačke\n- **Time:** Friday at 20:00\n- **Party size:** 4 people\n- **Name:** Marko\n\nShall I go ahead and book this table for you?",
+                      "thought_signature": "AY89a18YgFRAnMfGVM2V0jqBtcWXMNmtHow3oKkVrbuEdKVn6GDVB2exWB81weIwZ6IGpvPNJ5Dlp6msAguEAMiCxoBBcE0dxYcYPb_f3TPJ_wZQC_B-6OE3vgIScSjibG2WmTOLXqyWaJkuGH0HCMRtGX3JNHSGrF2jEbH0SGCM7KVVONCPVvt7ieTXWxtS9fedzIOAc3iFF_G4ymXRwFRmvfD7GE2rlDejF6U4BFtXwBiSBb-3j-VsVQckUNUcDBdOWQ4gUe7FOkyEvLgODnExtx9MM3irFTcYAgcQgokzkNfMCn6Rw3Tf11ZiV8bge8B-snRp1qp4PEKl0-LffPwTMUpCPYoHUhV5UYGw2A2WkqQrpaZbjRBsNy78SFu0hzIbULWZkR0ErH3M_EgRgmDGtTcCg4f3AETBiTDTuMhAtEtSMEAL0XM_DsavUetzyOazqG4Ef_ik7_P9qZAtjtQOmEX0cwabwSdI63tDYrWN3rIlEUvzi9skWgcwefzz-f9bt39IbTHKG-4VXl8yT5N30SD69RTQkzZu6ieYLMOUFrtSoVhKEfTwR0_dKgGjMx63lYYj-FI2l-p0eczSz99ienS1KAv6DfXvhnSQo9JQ9torajSYqdpIMDZS3bVnMslGiD9cvJChF7BEX_zR6padUKFcVLVORDJoOTwQyXtv4XrYuRGsAuxHfvl86rrWO-AcAye44pLiquZGgpOXGEQOFGnBf-TDkNwK_9CLHcO0vy2rTCuPrBfap57k1GwNERmHMg_PQ0Q8KMCZdo_dmObCPFbxEhIvM39-cny5wFR20IewmgKU0By2ikc7eMRUzdAnoy7UWRMatoOndnejUj-Z4LEo8T0b5U_HVIXRKJHce4gtT3L2ncUJSBwTFbZEt-6m2qQmlaE53t0SCcs-YunhGOPRRag3HoB6xHQKXtyeZTglpdouueN-pcPuPLIBKkLp-PIxgjBMYDGJNGR7uYDTzf4XWqPi2BbeREkTTleeZcPdHnVTU5Axygdo7gsGueW4bq8I5SByg6kZp5OXrDS7NvN8ffniVGjneCJZXDw2OANChChkXCQCNveipOmFMrVsKpFX5ROB2Pu2oeb5ncoFgNXrDSHPJv_UxiBwOEpYux5eMdpwYpBryM3vVZto7rTdzF65pzWV_ocX6v6ivz736ru5CrZ1HcXFmiLSAK1m8qtGb_p-Sqgjzc8eHJDsC4Dn7o3p2j2gL2congDlnUNmOrENiVozBsHgh3qVN6wu8C0CX5IBeHE0kQGYlTTGiMoxJ00Nok6BdoOpxS_dwJxiIwkYZxO04ajE19p2X8t2TBJqy117F7lLvbZGx_XTC9DzptZCGaSH6hR5FF8lUsQJl1Kt-S3cmt4kC7YsM1LfsKvDc-J29hkhwENFgfZW34S5XAK1beudOB4T0rRdUraNbxZxzosR5rfS1CNHF0Atv04IPVDLE_Wgtnv63YIgrk-l2MsqIysAqqt3EZQJEIFLMUoa4NU7oUl2nU7Nex8QUfF8IlEXWljjIsjS2e3bjnoAr4BOpPzA7u1Wi51DSOVJ_AZQS442PN8seBLIvIp_wxWAayajgkSaebhbwYjSCarW7FKUbWwB_uhFpmFS-w3WN5kvFTWLEh94rUXHQF-3Ips_qQhS_bL8mGKjw4VN3yanCSjyyFTmQldCFvp6J9xH78aMxv9lLmrFs2wY2e-a519XCYLEzwqKPeSE5oIEUjNSG1RcIOa2BTATQDKXumgmHvBsc0zIGgL53Wx0tXthHGMCJglUX6KwBrTcNfVbDR1PLC3x7W_hjIKAda0v3nEx_PyVAZbaHT1pOl_ooeN3thukdoBn-7bztYqzZ5mizqJItDBX1tONlWmmqq8FgC8R66X9gVCIP3KUdzWDK64RLmk1IsxYJcJG5xVUYJ_MTM8QNkNZTeRfTjL3F90Q4PEwCKIWCT3HQ8stiRlvJzYoJmwzrWGgDHzItZKWhaLwVV7doVbQylxp3zZLCkqmDTec1m2Mu8k6b5CsoTxpj9fHpratuV3uqXz_p7lnFFHpHZySKSIBnpMG2LQUnb8NGE6AzZnQlnWs1ogJ8Xij544br_22u7FYtyQFObot1YaTLSmgGXd5i6CfiOW4fziFsiW4z91pK3iSNn21CCi_XSY7VQsOFvQ-sEXRU1pePcM3ZL4c4ra3I-pCgB-1s9zMk2cstLMekkKzKLt6ig6RJ_FddpoeemIv4-2IoAvsdwA-ILXK-_vHvfZT4NTZYWx-j2BSJaGBH7J18lk8HgHmsb58KV1Dfp2vfYD3WwVFnFTTC24oJs6pHNtNs0CabcgSRlxYjL9msBL7Tiq8om76nUcL6OzjXqXTWMSwXoZQQFni_4pyS7H4lgFdR3tkqJcd6Xn6Fr-1oP1LCxnpMPGlMFCS86YzzytWwTRX9Hz78rA37hCZwN2YpXFlekGhedFKXJxKOwXwKRZcmrp8LG11aIwb6nAWjCgDLtma2TwcnK427eClJNVr8NN1ELpdzLN34v1V108JSM28ivaomZh-p5wlMMyvt0RomxSLVoSwby7Ef5Wbs6odHeDqZb2tp2v4r4DZN04jXoh55XZjMu-ctCJpJEzPkO__UmyRElMCsP0xEPnIRyQN9hqpBHZFpOqZwZIaAhxLaODNY9nq8SuFxAT0hrHi8t-JXXZYs06EIeXL52nc_MeZoYXM7l3BXXELRyweOQL0CffJBEbVEfLt_iOBUdVs5ujxbkqpIZ5P8hQTE_lV0pAI79fvq1Rk7lt39resA7ZaEULd3p1zidAJdHlsEKhTOIidfIQ8bkDdyXzEJN3EDdUUJ3H6nQjIDnIUercWTnWcVuGExC8mt6kMsiYAznpGH4vvJ-6qc97F3Qyb7n0AZneqOWlVZWil69UWQcevvT8BtasJMSdS3AQSRDTmRXUOS5cvHTPuWS6FsCOJO1JZTFlm1uGLCfIwmvQH8k1u8I22rIKGpvZysLSoX569v41w_Ta4B9-oxq1qGB-XCSfDPUCzCTKHiqT-3bygD7ZMF1_XcJ7txYc0zO0L87OePWHIBpKpTRO500Sn0O6Tna5zCf-_9AG5xxwA3-4U26ZosxC7f84DsMgP0M0PoT3Dr8U4g4Q31U-6RedAbeCFW63VdGF6BdyEqSJqVdoj7nvjcjHxxA2VaInFLtPPjS-ASkknXyK2GTxT7eWHFUexh2kXDxkifiRfSD8aiF9yKVheA8jmsgEzrh3JlWU="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:43:52.736959Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 3,
+            "turn_id": "e-8b37cf79-115f-4c9a-84ce-22de985438d8",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Čekaj, stižu još dvoje, neka bude sto za 6 osoba u 20:30."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:44:24.432983Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1481360",
+                        "args": {
+                          "party_size": 6,
+                          "restaurant_id": "r1",
+                          "time_iso": "20:30"
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a18phBidEn0pSZCZ9UrGB0QaFCqN7FRlrqu26o5uelzOVPQy9BayEWk2xnoV-PL2g2TRWXCwWpCC22CNQ3XM45KgGFk9PJfnAYCa8-bca8g2fr2c3ERBx9QkOukx1yghIuJzOjgumyQyFPjCdRh_3q54hflCWqE3sHSDS3fwrOo7jwFZxBL5rkYkm-0wi7vWP-ApGSy3Jj_tQAy8-sGoCfSXc0Y7W5Cy9abAl3q6YnZwZuGLlKwL6elmOQ6sGaBucozmUsVQScypUS_hmp5oElYGLg_AtKc2FDVk7X9Jz9TOZBiAczeTqQR41uBQ8Ard3jGpJ-mMHfQGEW8hWQFNnblBHCKfsyHtI_GlN-1ZeT1tnkU8jN9TpWGBONK7D-dzR72fhI109UwcCxx9grwqAk11_3xZ4p3vRKhIaULj6HSKTCUNJrOMZjdugeGimIzykTuVnNArKryI9SWbYFEChpCjiOdQ5rgRezsGRvtM2U9oryRx7x0uq_D6g4A8rHz5Emzbrjybp6hCSW9vWZ3xTUhgMwyf0tnx7BJ0dEr6XdW0qiGg7AbyfDtcOqurlSqsq2Ig4P8PJRczed3hMIvVCgLWyza1_QP7Hqa9hKh2iz9axGrYGFn4Wtnwc-PEmxppwo6Bkalj8KyNj7d2ENg6rUj1Spr2cCLDSF15cm8jykq4B_1pWlUFNdaU584pusxoVcqJlMHFeBVmiqYPEOTKshw="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:44:24.432983Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1481360",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:44:24.432983Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Proverio sam, ima slobodan sto za 6 osoba u 20:30 u Kafani Tri Mačke.\n\nPre nego što rezervišem, molim te samo potvrdi detalje:\n- **Restoran:** Kafana Tri Mačke\n- **Vreme:** Petak u 20:30\n- **Broj osoba:** 6\n- **Ime za rezervaciju:** Marko\n\nDa li potvrđuješ da rezervišem sto?",
+                      "thought_signature": "AY89a1-CI70xhSnKX15_vHPeJ7-8xNeCwwvSKl5veSUlp98OsNyO-HdPxOrTz_39N8yddBFeVUwSqhpYNwooDuI1j54sxQv9-n0jMgKgiASjXhkMujDyST3OOm-NBwF9eheFCaLA5co8wInWrAvGCv-KydEQmEYfvWSgEho3t3t9VspgvWi7dgqUqCXKLHVuBLz6tN-vRtFqcd5XYhlbKreKk_tuGtJtBc5MCJGaw3uwpEv_qKv1R9DYUkLGYsztcu3nDMo5QffOy5H0YakdN3o-MXaI_EsoyIDGlpsBBtj0rqTuR1Oz_BaOxQESqb5nxEipa8wGuzqEd3yMATkT3Kfw8MWv8oNxhlHJBSWz_ZFK8awpbR0t1idP-YnARmWWaacw_JZmRPdIsL7dg8MlCKcDTiQK1wv5UdznWySVvzPbU4ut8JIKVMujyaea-C52EOY8xBft0B7nCZVf-b_Np2nhJlfhQeQXTe7BZeDtbKYvpG_5zd7btFyPE5CDN12zScMhpK8VTFhAZth8PU6oEgpr6xgQ6t2JAJXt-BOnJ4beIGbZzQ5uLHbgqqh4dOQgsH2b2xkkfSK2NY37TZWZQhnBKzssWE4u7xYzmACKwttu1gW8Q5Iquw_tbkRQGETgl1QJfiqkfEsEc-Ius8e3Xf7r1VhR"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:44:24.432983Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 4,
+            "turn_id": "e-2675fe3b-9c80-4511-8238-1d08cc3b489e",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Da, potvrđujem"
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:44:34.876765Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_858795",
+                        "args": {
+                          "party_size": 6,
+                          "restaurant_id": "r1",
+                          "guest_name": "Marko",
+                          "time_iso": "20:30"
+                        },
+                        "name": "book_table"
+                      },
+                      "thought_signature": "AY89a19tvx-uObpGSxKH53JX5rlHlkiU8HTU5bWzaZyLjofcE5CYzk56GsdNGGklINwqU-jX2bcbgew4TRA51nCOWUaEXsA7MaF6LHRWMlViZtaK9onUqjNwsJcwOfrZx_4Wv1So6gkTWksawv-4OjLRWYImGvC8U141lr4yNr15XOyG8-Pcthin21CcBo2oEirbJzD8j48q3Vtvi7sqoG9vLa4Uyb6Ql2FKrgLqO-BF4esZMMX6MQHytpdEGUO8mrd2F7Giij8lvMjCs7iiRJUNVnaJ1LKmNIAnWhrYvFsKV_oJl_5X-6gZ4-vek13rA19EJDury9gJ_geRFPOOUIi4-L9iJB5wjJRKWOVgRir2ULHaetXa9-Cq56dXqDEX0OyzdiLmq5jJRch2lGHnaiy41LdbSDXVGxl_MrrGg80k88PPe8hdnttaSw=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:44:34.876765Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_858795",
+                        "name": "book_table",
+                        "response": {
+                          "status": "booked",
+                          "booking_id": "B-1003",
+                          "restaurant": "Kafana Tri Mačke",
+                          "party_size": 6,
+                          "time": "20:30",
+                          "guest_name": "Marko"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:44:34.876765Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Sto je uspešno rezervisan!\n\nEvo detalja rezervacije:\n- **Broj rezervacije:** B-1003\n- **Restoran:** Kafana Tri Mačke\n- **Vreme:** Petak u 20:30\n- **Broj osoba:** 6\n- **Ime:** Marko\n\nŽelim vam lep provod i prijatnu večeru u Skadarliji! Ako zatreba još nešto, tu sam.",
+                      "thought_signature": "AY89a19tRs_07K_AGfEK9eNK_8AjdI6oBF5oJMdLQczxN7MwddVX3soz7pj57lUHV9AUvlC84nh1vcCFqVo8eBBdxnmaQ76RWgFOtBuSy3LcMYuocBgi8gZ92xWGL7sE0D6f_5GBTEg3ApOMx-pqo9nyNKuQ57wBQMTKCh7S6hOoEdaRI0AaygpuGImRNcsP8z8RWnaJQUFZaG4WhB13Hz2xyiZxtlzsn_Pn5cijBQrcl-WrRVY2GzXJvnE7mfTVfcL0Eq9C1bFopveyynZPfPIaTyMjfnElR0Y0NmXRhHMOREfRuvh7MZvoIqQ3mGD_ua1czqd7pv3H5zR7G4SXNwBq85cT3hbPGmgpBzh5rBD6qTwd1RlkissIGuVyUtRDPlaVY2WH9B1kP5_L_A9opAxTRLEtrjLvainZ9xQl8sWuy-jbAU2X"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:44:34.876765Z"
+              }
+            ]
+          }
+        ]
+      },
+      "user_scenario": {
+        "starting_prompt": "Brate, I need a place for dinner this Friday in Skadarlija. We want some good grill.",
+        "conversation_plan": "When the agent suggests a restaurant from the search results, ask to check availability for 4 people at 20:00. Once the agent confirms availability and asks for a name, provide the name 'Marko'. When the agent restates the details and asks for confirmation, reply in Serbian: 'Čekaj, stižu još dvoje, neka bude sto za 6 osoba u 20:30.' After the agent checks the new availability, explicitly restates the updated details, and asks for confirmation again, reply 'Da, potvrđujem'."
+      }
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Vaša rezervacija je uspešno potvrđena!\n\n- **Broj rezervacije:** B-1004\n- **Restoran:** Kafana Tri Mačke (Skadarska 7)\n- **Vreme:** 19:30\n- **Broj osoba:** 4\n- **Ime:** Jelena\n\nŽelimo vam prijatan boravak i lep provod u Skadarliji! Ako vam zatreba još neka informacija ili pomoć, slobodno se obratite."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "989c1f0b-a2b4-40d3-94d9-873eaa531f2d",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "e-974ce653-2d86-4c8d-94e5-4b12eb6bcaf7",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Zdravo, tražim restoran u Skadarliji za petak uveče, nas 5. Vreme je 19:30."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:44:59.658475Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1657905",
+                        "args": {
+                          "area": "Skadarlija"
+                        },
+                        "name": "search_restaurants"
+                      },
+                      "thought_signature": "AY89a18F9p48sFJ4KGLjzaM-QUfBtRtnsWgKUuMA9J52tqPQhxDVH84qwjXIXKQY_MkvkaIiMiCm5APvhJsW8QsCSNB4Vq-FXrzvNQr0y9QfLOX_ejjrYkMEmeE4v8iqnszW5vVuM8Eo2sm4KOjf-6gL7xgzhZPJQmqgJ90zJdyZ7NxYo0Fmt8_y6QMu5jgGjFce2Wj_OWfVeLADi2knfi2sFFxdJH8sN84ijRhKh8HLzNMqkMzuYN1Ay3sx-ffulqj-pkSmm4SawQ1dBWpAGL9P6yVmulGfFi32wuUeUHJhyA0KDemKfgvYYaHxsKdWG3lU2Ga2-QTfgBRESNFnwEmMDt6g1AbEpwhcC4gboFu-xa1vxVNZ_o1h65kqdPwAa7BxdRXMGCndadMICroNDJHcV-b8hABr-W92-jR_B1tnOXkBnJ3WAigZnvZVa83GxrI_S3HK3wm2Q4T6eTiS5yCRwYS4-EDx5mFEmpw33Vnq0HYN8Dzs52tDNW_Jq2eq5c6tqpunhzqgy_-Zjzl_T6EuQ0Hx2PM5qCuLfxWYuTYBhbGpMSLuRS6oY7lfwCT6ve2AZt-k2edi1Qa4VO6UuXOzaRYpSaKgqMcRbzH1KalOmTJ_T5q3xkpNpm1rCASRA0biTG7IF295RVgFGR0iWNldCwhqXzqT_x0ySGu3t77tCe6KIX4="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:44:59.658475Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1657905",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            },
+                            {
+                              "restaurant_id": "r2",
+                              "name": "Kod Starog Ribara",
+                              "area": "Skadarlija",
+                              "cuisine": "fish",
+                              "address": "Skadarska 21"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:44:59.658475Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1879168",
+                        "args": {
+                          "time_iso": "19:30",
+                          "restaurant_id": "r1",
+                          "party_size": 5
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a19iMisOIcNRkDE1TwD1ScW6VLQercKJVfprbXNAa6gB2AbFWFnwpNFZKmMEIZ_x8Gs8aJ25WZnXfiEivtWAPfnfevdo_iQ6nNKHUUBEaYjPETDiefaYC9EpSRjtP_VL7lS5dFwaubmTOp3o68pZlP3ZDYyzbSOgG3LCHgRh8NMJPiexdrwzs8Mxw0YYOfOwdzms-uLbZ-wo8wT6wtzKW7p2VHsqg_gNpqBRRo1JFIW35mUKpUETc3zASRrvZjvZwTfoHY-FAZCIUuymvLmmkWmJ_1vTV-IgNLePb-fo5hUhOoFzKNJ3DoFH4-Ptkzil35B1Our_q4QtUXravv4K6O9HKFXyUqBmeTyjaA6TRgHGu4-OOuj_24l7cf6v-ak_2Y53AhvEHXdzlGS8W8HysLRB80czPUUTGBPi3KdbhoHgmrmEin0cphXXtyvByltB7lVtzioVxldp-A4SXIktnZDJrynFGGVg_kbg7_50DpmQA3IYgQ7GwYz4qrp5piZmw5m95cgoMlQRuE84wuaPJBTjCYc="
+                    },
+                    {
+                      "function_call": {
+                        "id": "call_1879169",
+                        "args": {
+                          "party_size": 5,
+                          "time_iso": "19:30",
+                          "restaurant_id": "r2"
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:44:59.658475Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1879168",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "call_1879169",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:44:59.658475Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Zdravo! U Skadarliji imamo u ponudi sledeće restorane sa slobodnim stolom za 5 osoba u 19:30:\n\n1. **Kafana Tri Mačke**\n   - **Adresa:** Skadarska 7\n   - **Kuhinja:** Tradicionalni roštilj (grill)\n\n2. **Kod Starog Ribara**\n   - **Adresa:** Skadarska 21\n   - **Kuhinja:** Riblji specijaliteti (fish)\n\nKoji od ovih restorana vam više odgovara, i na koje ime bi glasila rezervacija?",
+                      "thought_signature": "AY89a194AhvcOUTMLVXH3nmV1OJZAJa7HLbEt7gbJTxJWNT86Z6OGsA4UrDcwmXLo7hRTAoJOMPb-dbfgKwZ02Ua4sV6TRE8thbfl5ZkIfQUo4bBb1hYDsSxDhafZs5_llv4qOhDmSAUizZfI5LP5kItRK6abCvEOpZy4iqIlgoUaLQU-lEwtQwdVRiq0SBd24RESjv9rzf2i12GJAo989nWRhl0kPxBn2i7iDPokrL2sLi9KnIQxZzjD68if2dfqNtHxNOukXaq2l-bf6uWD10Ur_j_CO75LZz_S5WQ4qrXEEUZxxIie9t9pGubDPVzYZVgPyUoEPce_rbCvvT2eJ1TA4YUZ9gttBejuabFfZaizQiXRKRe0vN7A-xB10T0qr4_uwkkAJva-mcRu20WecQrFzwrNiDq0Mj21DDt0SdI5IFQCg-QkEr2y5Q_W8PL60pvi526-xrJ30M2r9hw1f3pJEqwYfb81zEYgOiKbH60Nw2fcH__0F5PWfmHK8k3V2Q6sjtNb-nYV-fPllCmtQUWj-IvWu0w6zZGWoW5IVvIIOB_o9yNKP5Yl4hEYXUQTDJTwZi--2J9fH8wRz8dboM7ZLxmub35p3trA4JNUu9i1m3RqSD_8kc9ezVaD4sNRTOpCVrRj7DOdwGe6Oxc_EiLf7o0t6FoWo_u5pttSZ5Qv21a-qiQp5vLWZCcJzmPOtM6wW4Lt20A1B4nE2aK7cU3eBIVyClMsO7lsmtZICfHcz3P"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:44:59.658475Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 1,
+            "turn_id": "e-c0225dba-432e-40a1-aaa2-cf8bd8277817",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Do they have vegetarian options on the menu? Also, one person dropped out, so check availability for 4 people."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:09.442182Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1950898",
+                        "args": {
+                          "restaurant_id": "r1"
+                        },
+                        "name": "get_menu"
+                      },
+                      "thought_signature": "AY89a1-g8-96w8zuRuSO36HqLZilVsDVPnZJa47aejXV0n4UvagIPIFjT3ASIzJLWoA_iU2N3K9TyJA1i2IZ1WT-fLvXhC9LhAr4s9lX67RDBUbX3AKYtUbkACMwdhqBvPjjI_8X8kY90pchCmgv_rhib5DqJtyLfHPioj8R9EQL19oMAb8dMV99WVs7Lhsl2zmuJJgwE7B4RZAL82dMO335IkklmGB6XD8qSpkLagZWyLUzDMeco_vqajlNgkonb6ot_8J8demJtHqybw_PSRgf3o73xKe-jTpXV1CIRRU0q0BlvgTdwTCWidav9by-dE5_fFI9isE3HLLN3rHryBZ8-UjG-DhyB2JddJOTJxrwbnVH0pdXjv7bFc2VCYuLYr-dlPgxL8UWb3he7gLcBZ1-LK8TWM0nXMNXNDTJjLgnl9yippbatF6ceqLu4VHRZ4ZpSxkUxlXc2v3azRnHIuuIXy-RZNO9ETXZ9TUF-1UwSpoEFOWfNooKjA_0u-Z9nkOdbOgR-rYYw191eGKhpbZRWauoTFkeTp2aAHZn9kSOEhQJO85mEaC4JXoVujFURCYiYX2RUo6LgeVNVbbW-soYKwCDot0OL1SCOi-TNMQVtp_YSFA5rr1t-12bqNkeN5KVFAl_4vCWN2kJxmKzlDoyalDzrddUjTSyOgaJh_FS6eD7QA=="
+                    },
+                    {
+                      "function_call": {
+                        "id": "call_1950899",
+                        "args": {
+                          "restaurant_id": "r2"
+                        },
+                        "name": "get_menu"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "call_1950900",
+                        "args": {
+                          "time_iso": "19:30",
+                          "party_size": 4,
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      }
+                    },
+                    {
+                      "function_call": {
+                        "id": "call_1950901",
+                        "args": {
+                          "party_size": 4,
+                          "restaurant_id": "r2",
+                          "time_iso": "19:30"
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:09.442182Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1950898",
+                        "name": "get_menu",
+                        "response": {
+                          "menu": [
+                            {
+                              "item": "Ćevapi",
+                              "contains": [
+                                "beef",
+                                "lamb"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Pljeskavica",
+                              "contains": [
+                                "beef",
+                                "pork"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Šopska salata",
+                              "contains": [
+                                "sheep cheese"
+                              ],
+                              "vegetarian": true,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Prebranac",
+                              "contains": [
+                                "beans",
+                                "onion"
+                              ],
+                              "vegetarian": true,
+                              "vegan": true
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "call_1950899",
+                        "name": "get_menu",
+                        "response": {
+                          "menu": [
+                            {
+                              "item": "Grilled trout",
+                              "contains": [
+                                "fish"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Blitva",
+                              "contains": [
+                                "chard",
+                                "potato"
+                              ],
+                              "vegetarian": true,
+                              "vegan": true
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "call_1950900",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "call_1950901",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:09.442182Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Both restaurants have tables available for 4 people at 19:30, and both have vegetarian options:\n\n1. **Kafana Tri Mačke**\n   - **Šopska salata** (Vegetarian; contains sheep cheese)\n   - **Prebranac** (Vegetarian & Vegan; contains beans, onion)\n\n2. **Kod Starog Ribara**\n   - **Blitva** (Vegetarian & Vegan; contains chard, potato)\n\nWhich restaurant would you like to proceed with, and what name should the reservation be under?",
+                      "thought_signature": "AY89a19xGRLjJMBQSDuB9ey7F38JiJpfWcSqX0XQBkk_fYf-KD2lx0bXlSWrtU7yVPa9U00IcrFEwnmfJ3FBJBFJF8Y1NdmBr13xJUOGp0uBH0A-a4I9moMix7oblINzr1l5okq0zw86hTIVSws2gnpXnNmAR2zmj_Z1lMrC9BnEOMlUTTGXlDqy26raw-DjMT9q0AfOtO6Qzvy8f2RP7Vv4w0fekA5_zNbpJvwf8Cm7m2jNutc3EfSTmT5I27QikXGGT7zbSAOZfwdn_ibncGFxdQ6XX5gj0PxPdwX-GEYsT9o-4FelTB8WBnCPe14BfWJ0LwuyCzOTbt4HG2VypX5t25k6LH9_Hc-vSV48ZMa7_NpOGj5WGysVFfBmiCvLKhVHxq9pcTNSFuT1b0iioYrMHtTV6FNqZHPasuWqdFqjBIuxT8Y3GD9nAUgArfqN28fVVVvTl3BwPUrsrTL5gBFRP1mv0fcdWKOB0OkT0L9Ma2bsRe4ru9dJEGzpN-Fj74lL-pDQ-y2u0cdUACHIgLuMxS97ojEYMUh_1B7lCozLIvm7_0yQYukKFMDyI4SiXLH_uoajeayJPQ53bBGK5ehrVhLdOUO9eGDMUv7JgSifuZIs3twXcl_H-JIBUT4rSYEe60KzcyfRpG4fpDYwbRDPQfwAPNJBYh2WvBzNDcXB95Cf6uil2f1dg-U76RC5UJjJQ9UDPtBrtlMsg8xTINbcd-pfYARxGnA8-jUsA0_BHUBFzvQj3ruygCJqb175Nw2YP78WWIMI-8n8xJaw"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:09.442182Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 2,
+            "turn_id": "e-6b15cbe6-971f-47c3-b033-449af5bda625",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Super, rezervišite u Kafani Tri Mačke na ime Jelena."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:27.508868Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Pre nego što napravim rezervaciju, molim vas da potvrdite sledeće detalje:\n\n- **Restoran:** Kafana Tri Mačke\n- **Vreme:** 19:30\n- **Broj osoba:** 4\n- **Ime rezervacije:** Jelena\n\nDa li potvrđujete ove podatke?",
+                      "thought_signature": "AY89a19F0O16sIsRFUn4i94z-z-bLqCjXV1ipej4AXzQ8jveBBaz0M11Z1ohmbXpwynk5r0NdcCNh0diGx4qPrWp5tNuRPWMoGS1XgJAG5I0dx-bwPeyqEKCvKbc5KwKrDm0NMbOOWg2ltGY5LtyZzUA-zg7Z9kq0KcqytQZ5vyjp8CZA4i0BZ59sLLOdCioe47XwcjGBT3KRvn0MDzqIqDD_c_iQnmbLrAUPPsM3okzAexx5dM8GMEiIyW8s5AV1ISszoLr_dbP4HU1wAXbkVdS49tffUoVIvpwvHbHDsy9-aRuHxb8zZWa7b1UmGDwXSWyb_fYCNb35dDeDare2L6EAEOarzU3Lt5UF6onrr5lA-pJ7E4VKwNsxFze7E6L4fTFEMC32HUZ4tKdhi6f1cM-7JK90TP7rQ1FaX5cXw4FaTIL2L_S5ns0ml9sLrWE9Eh2XzP5NzGTFNlDQHCt1eeSME-qJ8MAnEfsH03acwlGSjWpkCcP_IK85KKRQ9fsjB9STrcU_7gPOMkRAt83Fqp4_rCAautJwzW8Bf9IgeH1dKifSXqP03klJeaI8OPdXL7l3apWwKs2nbAd4N2WE8BBjBCW8_TQSrrWf-u63urakPxLRTYp9CX_9L6XHndF8tjMIIfKYtokY7iOUv_nS8IdG1nmebOiByWGXL-nD6FdsEMg-w_bm1BUzOBT7nlZ6UyucEqUwqydZWnzRzzToTlvYlY4GVjNCptUEh_Pt2VoOljJ013Yi1Qmp1WwDD8ZW57_MFwcuTqcJjkWxGuavR5vuqGRONq_7RDO3qE8bdV8OWv11GHnSjp4xogLc8m9bLvARgTZQaeJHhoza199j9G-P6Or5Tgjk6djxfHp8omXOAsTXmi4CmqG7rqGebXts4ucOQlQWOBJVW0l0MPwvOev1TBODRHTfKq8e771rmHV1u-tkD91A1rs-d-ppTRhGd8ZSNAZwMBbPGBtYI77oUkQ_YJqZjtfhQ--QpTu0kWKepmAiSiVIxuuKdjWALpKNQe_EqcwbR7191GYhfYA_AKYU0luYjBkDMAOEQn4oEcZUDa5TydCAJeCrnC3A_wjMo5r8ioJ7owJYXKqX_e7cMzTPoKDCCU_Jz7BeU_lPMnieBKGMUkG-QSnE4G5NINvUF9TUm0MXvKVzLX891E6sBMNHpZqfAQZ1ATCp3Yerk89OdEN7oJnE6SFN9rJay1rRzMAfUOKiiZGZRI1T8ImzPNE5VbDZ-_zWRjywrRaq0DswNiHtSEyW9Bwsjq14dIZG1oPt8oUyX1W9i5n57llXjfsobOr6cYwZSGGaxE7xMDVR3niu1PkcMVAC1uRCYyOTv861X_JE9-XQWjh277nVZx59ZUviW_nFEyNfuhNys9R7dbU0bEisTlHa93IXpVbpQjUPjyuU-SNahBjyS7dmNEopYcCv83KpcJOwZ2EKj3-KJvuLpf7GzjpeM2b6pYBG5WeBIyfaeihPZ-oxgjqtu5jt1LxUvDKXyTykuPfJnwccESfO3a2MwSW88Msqszg0fhFvvRLpWFqKgF5RSGubedlMHOlen7qLUOQO8UcTPNkol5mkH5UlN78rAiw6kFK-Vh2pFkxSSOkg-TQIPyaiI2vzvPYvukM5ffz0ifBw80rR1yDs3chfpH2jv1niNvvxE-JSnZeYjfUSaMU_b9SUZ2IjoeHSfct_YKkwBYVOFCmy9MsUmR-2hlh0CE="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:27.508868Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 3,
+            "turn_id": "e-8e852a9c-1d18-4626-a8f3-dbebbddb0296",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Da, slažem se."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:33.246162Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1934995",
+                        "args": {
+                          "restaurant_id": "r1",
+                          "time_iso": "19:30",
+                          "guest_name": "Jelena",
+                          "party_size": 4
+                        },
+                        "name": "book_table"
+                      },
+                      "thought_signature": "AY89a1_Uq3FSiU7uJUlrEL2BajYnNBtn5-mJ3U0icejFxP2M5FGvS5Q6ndjaKE5SgrODpbsNt_vIxfUkm245JkI0Fm3v8KqXXNggukZsFFA-o1ImpAxe--mTi8wosOYVpwpIlj9igXoyFE2KGVJg28TVSThYCpoLKXAdv0238_8xxYZyFzr8KFOyZ9hZY82vxhcwsei85YP5eedwot_dTpEm_pavvIpF-SOGMSWPbGPncEIBj_0vpkmj29sunmsonSh32zVZfgxjPrpn6Hc9X1NPFYPriAiO2iOv3NLZbH2bx3X_uQnetwFxa6d2FFGEh52TvWpU5R-vNB_js9h_waLybdKn-I10oGYQHh-Y6xnbDiJOQLpmiWJulGoiN2EKo9lF1hetZoq4KbkF351zs4vcM2zHC69VQg=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:33.246162Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1934995",
+                        "name": "book_table",
+                        "response": {
+                          "status": "booked",
+                          "booking_id": "B-1004",
+                          "restaurant": "Kafana Tri Mačke",
+                          "party_size": 4,
+                          "time": "19:30",
+                          "guest_name": "Jelena"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:33.246162Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Vaša rezervacija je uspešno potvrđena!\n\n- **Broj rezervacije:** B-1004\n- **Restoran:** Kafana Tri Mačke (Skadarska 7)\n- **Vreme:** 19:30\n- **Broj osoba:** 4\n- **Ime:** Jelena\n\nŽelimo vam prijatan boravak i lep provod u Skadarliji! Ako vam zatreba još neka informacija ili pomoć, slobodno se obratite.",
+                      "thought_signature": "AY89a18GaNBZxo03yj2hQwu-feG6QMWkZS5h4gHspv0ZmUMaugEAxgk2uYAPCUvI0dSPd-o89xvkeizeCa0Vyr2GoD0Bh1pV_L2mKvx8g2Nzb5tULLqCyODI1QrRoW0_Zh26jm96QIltrrpA1ABCsMPh9sG9OgeoFBJqF_q3HCU22vtxwLgX9DyccmV4I4HeqQKARcQb2hdJTw4MMIR_zhprg-0dfYS7OjWbA9B1FcvjuWjEOFxporSeqE8ppM_Z02qTSA-4QF1JPsF5dh5oxqWzycTQNfjHHHLYACeT68ud4tLVAFAFFX9fe4N-o-jtUD_Rpmmc0BWZpBB0jLNi1lLPpn4EvAI="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:33.246162Z"
+              }
+            ]
+          }
+        ]
+      },
+      "user_scenario": {
+        "starting_prompt": "Zdravo, tražim restoran u Skadarliji za petak uveče, nas 5. Vreme je 19:30.",
+        "conversation_plan": "After the agent suggests a place and confirms availability for 5 people at 19:30, ask in English: 'Do they have vegetarian options on the menu? Also, one person dropped out, so check availability for 4 people.' When the agent answers the dietary question and confirms availability for 4, say in Serbian: 'Super, rezervišite na ime Jelena.' Wait for the agent to explicitly restate the venue, time, and party size, and ask for confirmation. When prompted, reply 'Da, slažem se'."
+      }
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Vaša rezervacija je uspešno potvrđena!\n\nEvo detalja rezervacije:\n- **Broj rezervacije:** B-1005\n- **Restoran:** Kafana Tri Mačke\n- **Vreme:** Petak u 19:00\n- **Broj osoba:** 20\n- **Ime:** Jovan\n\nŽelimo vam lep provod u Skadarliji! Ako vam zatreba još neka informacija, tu sam da pomognem."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "39a2a650-3229-4d32-a78f-9a2a56c9b0a3",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "e-e769c499-8a9a-498d-9930-22d7241d2a94",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I am organizing a big dinner this Friday in Skadarlija. We need a table for 15 people at 19:00."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:40.822329Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1389316",
+                        "args": {
+                          "area": "Skadarlija"
+                        },
+                        "name": "search_restaurants"
+                      },
+                      "thought_signature": "AY89a194tEOKvGMT-zXS9OtlUdGarvoRjFtTLqI297iv5cxTTUxIruxaz4e9mkhft0h9iS3ActfH4qFn0H2YuUPpiHOGkoes52FRF46zLxehHQvNwrcDv6CnMuNoIRupuezDwbD9r2o5kZ9RIslwgE-N98OmbdxW2eyojyo7VHm5QbOW2pf3gErHMaLGSLtOJEEuQ0_2fjfBd6Pb1A-vB6cia07ukA27ebmKJ9Qxt0AjTGb9Lz99UeI44_MkHsk6lgxXJy2ycFtdCL-amh6_UcHchVqK6MsNc9MrjFCZfz6dra6Ero0Sbb_q_QFqZ2qnkU4Ckc7r0UXZT6Bw16KLcrwxD3wUS5bCMre5mcZSBYJo1eRoy2CpCJjyzUV5Fi61GrAWOD_s4pEr28jjZA3ueE6kHePGza8orPmoY2QCmLYiG8Di_ZRrjpYzkQMQmfGbmK7hSgI-j80ia9PbxrbUJMAP957j_jskwtELkrsl3YA="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:40.822329Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1389316",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            },
+                            {
+                              "restaurant_id": "r2",
+                              "name": "Kod Starog Ribara",
+                              "area": "Skadarlija",
+                              "cuisine": "fish",
+                              "address": "Skadarska 21"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:40.822329Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_89759",
+                        "args": {
+                          "time_iso": "19:00",
+                          "party_size": 15,
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a1--E0jHO21PBvLQWvSahS1QHVVmh5NkTzuXyJo5RLVQHudx3weiHsfjftmYRGRwdvWsO1c9-RTGVHjamvJN3Bkq-2lIGck3K1jMiRiNzy61mXp_WjjHs07OrBdoQUBZZZaJWJW6_wWyMSVDk_dsewFrjsllqKTgyO_KinJvJPc62yoVCMao146kemI4TjobAgJkQywGxcJGJIDiIZD_CuoPlox-EMJc7p0PC2gPHbQfamkCZkmzbRJo7sQDDd8FuEjGkf2Sp88_dlmAgt6DYz-uT19Mx8h_fvUhyBDbCKxBNhJcCvgG9FEo4q3_lb8ONGP9JTjVfLPZ7fR2tuQTL0cG2wkpkxIYDhqXPndVK-pgzIPIfswC18pHEBAoshOjvBIqptb6a4dDIPFS96IRauoj34h1Q61si7iSgLGJ59m-ZSTuwJUnEkDpU9EiXeGS5y9ZT5J7PbsSNZDUTwIk03KsE-JlP4UVZPythDlUA_i5CrqXMQrMbFLCtBDIicTKrUIYqvmYOqOk2wxzH6JVNDia6A0BZZeCsDKMRqKT1OqX5JLlIApvHnFGDlNptQ0z-QaHTeaTMXSc5IPhKZoCRe08F2bantYvR__4gS9VjOti1wm-_zv9GdlxMQhtTMLlC3zBbyOOw6oVMgpyfY6FjhhHBk0IQ55iNXbOcZ3HKYA4xL1MXHb5bRnJa2fq14cGuZyXsuDi4xfUvb4tPra4Rrl1sp-Xbs8JMIBZ57c9HSXIfvYC5kKGdbbv"
+                    },
+                    {
+                      "function_call": {
+                        "id": "call_89760",
+                        "args": {
+                          "party_size": 15,
+                          "restaurant_id": "r2",
+                          "time_iso": "19:00"
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:40.822329Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_89759",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "call_89760",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:40.822329Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I found two available restaurants in Skadarlija this Friday for 15 people at 19:00:\n\n1. **Kafana Tri Mačke**\n   - **Address:** Skadarska 7\n   - **Cuisine:** Grill / Traditional\n\n2. **Kod Starog Ribara**\n   - **Address:** Skadarska 21\n   - **Cuisine:** Fish / Seafood\n\nWhich venue would you prefer? Once you decide and let me know your name for the reservation, I can confirm the booking for you.",
+                      "thought_signature": "AY89a1_IctmCx9NyOWixq9lTq9alaJFgepUMD4CQed1W8Mc8YPLsFhCF98RYYeowTsx8Dhdp5MRgDz43tCjlji5YoTbjrlKd-Kur4RfuLGsEMKBYLUg_YGzQnqBLKNN1pW_zJSkkuKWfhc1fgFL1up62id1DaCHWXytPNWFm86m5iOVhLJIKMF80Tv1JHadb6qxj6rW4Dr_y0Q7K1EVEs9kX1njda44lRL5DVg0Q5PVkah0soTUnDEZxRGG7pN_WggTiwsv5rnLd41IuBRPk5WlMNEDgCiqhjOlxt8o8B9mzsx7eJXx6Rx1nxiENarOsXG1ZKxQ2e_bVpwO8fhfoo6ienaPdvNOXY1i7z80FaAhEjJavWvisoXypLCcstQVBugxDXo_udQMX-_fVNo1EuNpkCELeePX98-K9g5WzyUkuFjnNq4f2t4ZwG8YzZHK-kOiDnbcN6SNGxVrsFv5dhaTTzonvePIeZ4Y13pb-mOOi5djHEYRpAWVDiIt_XVkjPmwcePikhSl31_jsDW6FfmVUOOkyTlW6nYTuh6Fvk4emcIVtK8YdSGQUNxEqAR6x-xg4z1FzOczcpRQT3oV2nAZXcvQydQA6q4iTvUOQchNaZxwQyONrzOQ1xJFrN_hRPQpkkV2Mc5XqTFu6K9hyUMNgvIycC4LyuVLzTYp3LkAKUP_ZJ9r2wWXkMj7YJehcAZbNVu8VS3kB-vgqiJMgeivuag8wdGtWP8xZfDuQEIrs8lVFdfPMqB49dxZRB9M7n_0bbWednAhsWNHNk81KnIDbG6cDiwR7KeiVZ6zQNeVTvDI2etOnBwlcaJs_aSoJjRqD8yj5YXfBGYY5e_sLtEokW5TyXph0u7I-NhAVOkCzmo7MH5Z9kb8j1CWGai_4v_0rTxnFGkBlCXIlkfvJ03UUqStY2wnUvWDIL5LTK5-MPB-1Iv8aGuuyCqWkEJiZ_y3o-9vqsB1JRMYFkLpws70DqNA65_TBFDfZmraQ2iH1Vbq6JrBtRJIvLs4LhPoXNzn8lLtu89BnE1KX1smI69bQ2xT79gUCkZYem9-fW_8inR0bfjE0BNeAQmuhIHNnY_oGaamII8ITFqmghINWk3XiVqdFO_mYxSycx7dvHgxST5k2fK981TqBH7xUvGJdaDcuBmofFez3iXNS5_OUEWaaOl6W7_37VZgEB-uTYf2RHVW198oqHPziv8Dvn_U1RL4UXviEk6uQ7wDg7T5f7NAcUGliu3kkDQ9SyrJXjgX6lN4aBVvXQWof308="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:40.822329Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 1,
+            "turn_id": "e-bad30216-70ca-4118-90c8-23225da04d33",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Ipak nas ima 22, molim te proveri za 22 osobe."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:53.828577Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1935367",
+                        "args": {
+                          "time_iso": "19:00",
+                          "party_size": 22,
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a1-96DGrziI08EaXCGm7WYccWdXegAftl8qvSzmVi1cTnHFuSz-Z6e21V4dJFnKnG7pl1Zb-p_gxYCmYEpdKtdFkdgD3ngEqTqmeLI3lSFmwyXsRrOJnImd3RgWAlwLaDKSAB0Niq7kfjSxv9oTRkNDgvClfV3m7rQVllyXDrf329gTXzjJhN_hkKP-cCDLQ_Je716gGKQmt5c9MZHbptdqFieEVkIrRDtPoc0QT581I1S0eFnV9H41CUn0Thvtb3zgchXUuHUQjl3hTv9nndVG74RXn9HIqkn09Ta5cisXRjLp4cDj4kovUroPjXHBfA-KcOi41gGo0vrwMEaPlURFOMyaS_jZUHQxSPXnJjCkmwibG_PGtZTj4UKtDX0K5uBSzgf_uoAbICqGToXlezd3PwCRzN6tKcG7cbYQkoh1EurmFWMhQ_V68UZWMkGS0iYqn1nxfppcsV8ywQ8vJ1O33X9lwV0ELxjvdFtdAas9PydZoxeOyGbt50S05-aa43HeOrDfZWKq0Ye3slb4zSW5-tzldMTsD4MK0AdqxWGWPdO9dJEQNZvhr2szpKiWxog8tPnPWJGLHJB39kD5CY36ogJYv0UdGGXMGG5r6V_IMlvh_lOOEYIukQ2cdapF-IIy6GmPtF-jY0pwH3Sgamww5ci0hTZYN9HB20Ab4cEmMcbtzEJ19VOQmFad73WBB_1VF1aB57TSREZkgDXAkKkMH8IeN1QEMUHAZ2rnpx_ThNnCfCZkjqvGvhXzD0ecv9WTw3qhwfBWYZJZ2QrnOAZcP65WJEPj_1I6L99CkmMEGU3UjWM0E4ZrDeYt-3XWOw1DWHAeCFrg8GmV030cTr4-JqAhRUOwUzxtLAsFalQxNezlqRqUv3LsF40cDHgFHtpezudE1BmIzrhLlMw4uEYkuHWUpPvLTbW6WFizaoGD-LvHWngcPjdD2zHycOs27AGORDu74dPHiiyRWFK7L7IZiK9aj5x8xXX-bR6I0mNAQaSGCT3nQ7DpIG0fM8sZWSrsS6z8Q5hhqUw4tcBQI89x-rUTyB90zemOuwlfJhqeE4vS2K2fppvkKp62CqylfWC7NHjN-t7vFcXDeoMMa-zrtlITnxKnb39GJ8mSZpB7hqhUCyCfhsOj0Mx2AE4BHc5ekv5SawvuhYjTY8YhAJOSqIegHuUdviiUGozkDZ3SyONSsO23Hc7fn-xYJnimn7-3nakJXy45inG1C4rFa4kpAn3lTIz01wWygsNnOgg5-VPF6_GUsErXzAI4gRV-09s-ybvXUUwPdaPYEe615xUmTX7May6-E0872XeNpbZBI5pKuiPrrH6Fu1WFgJgiuYQ_640_SFFUDeMDfJ-Y4K26ab-eF-of9kGTWBGyZxicCI7VGnYx1uuR2A9p4VXrzvvnAUBl8vQNk-IIdcjOh2CAHsfUOscsi88DUZHS1oPZTE_m16Kvdfx3AiVNxIny122IxcP3e6VAZBl9eQ0E9fFeq6PNimo-qqxt4NUI2ZzeE6BoNGhQ4Nm7Qkkh4oWdAgh8ES1x4iK4Wv84726rZt1QFkxYIekcCKRgiArcpugdzMENW4WXUFX-0BWHFD5XSWLQu09MxkQAECNWlppOHhvesPEUfdaOpGVWL1kpuQ7cm2ZoAfGzbvopQ3bjvFITvoS-0sGcdR-EnYNxxXJjmpr_HE8nQntoQdeXHI77HcNaQMUcUGEg6DDzHnAvas68bmiGZWmSw029q-QSvOeHVcnXT4fPWImGyQIedDVgekxzhYA6SvKx9ER6MIHbg-nBN6YV1TK44cosM0hH3-CtFUkTJNXPV-gGUQw7DNB9Jmx99CR51TZe5zhAFGXJ1WAk48TPx8M1JAjkblEivQsBGbUbwH4Hi2PK6VR5Ab_WxdjAh7HTi8nsuMaZhaIXyMmBLPW6YfZ4KEeZcJfU3X1OCshTtjKO0f-dFCpSvnNza4Ay9jj3a0_kvEoqbwqvb0k_MKpQZokoEK83IgtumB7c9h4QputL5V3xqTIjEfU_kIOw="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:53.828577Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1935367",
+                        "name": "check_availability",
+                        "response": {
+                          "available": false
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:45:53.828577Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Nažalost, putem našeg sistema moguće je proveriti dostupnost i rezervisati sto za najviše do 20 osoba. Za grupe veće od 20 osoba (kao što je vaša grupa od 22 osobe), pravilo je da morate direktno kontaktirati restoran.\n\nRestorani u Skadarliji koje imamo u ponudi su:\n1. **Kafana Tri Mačke** (Skadarska 7, roštilj / tradicionalna kuhinja)\n2. **Kod Starog Ribara** (Skadarska 21, riblji specijaliteti)\n\nPreporučujem da ih direktno pozovete kako biste se dogovorili oko rezervacije za 22 osobe. Ako vam je potrebna pomoć oko nečeg drugog ili informacija o jelovniku, slobodno recite!",
+                      "thought_signature": "AY89a1_YuTWE-nZykZ7nDfYAQ-JOe67N5t796tfaCMmCAzJyKui8uSqKsbCIVUy0I8ohB6KZpu-tInF6hBM3Cm0zbfOvTT1d4T7tAAPGWmbrxTM88ZYBFAu2SX-78D3s9fnDfU-7x4CxeVPaKSSHniF3saeZGPwlchGJw8HAx-pVXn3AEeI_nswzaHy_By7ikRxvy_MkL2-BrgFqjj2uBMg41tWkuiPrUs9MJAxgsJIc9NPdus2Ett0S-RnPeYDTEETJuiMoALdRc8CKVONeb7aACLL9uv14s2Xib016iyzzMtHqcQObXJLH2_JtL33Not--0fcG7d-5QblTpHEZM0NEQLhzhVNB2qCHyJ-kU6JJ3-X3pUFYeIvcsKlkpwbDReURTHvz04oI2Ur-ENRpLfXE6-_d50yqu3LDAHfqdofnqnDdjr585k-ot7GSpIAKJ8B_WBTsMWFVQ_iidc_vvJUHdNDlj2fnqu--QKtzeVOZd4gv1e-u6YQNN4EArfAyvA2UdIg6-WKmqwz3XJ9-ckhslLTaAzwD6dyk-NohGLVPRGvtt0tmST9FerQTDAvJhBovXSinPXyXjA-yUUmMmnc_Rha9GuPwTnY0yiHPn34pCmSZW40orShxn3Oel4L9boqM6YhtqyrPzmaO3AW6_Isr1-MQ8z6yCi9G9cE3jgVe--zuO8my9O-anIkhJjWu4HvWov2E0B5_GPKqn271HJc2TDMszbzYBDr7hqy89m3t5OriGQ0XMsbo8Yp5hn17WHzSNw6QiJviKWXkqNNfIsClEkPtY3mgOiVde5ytWZXUeETgS9ul_5KQyhJAUTUJvl6p7G6jCLTiTDKirfkXeKqo3t4W8T3yRnDJT6FSyNqYMS5Qd7S9gGwAs7b7t52ioBHLKlpMyZR7tY5WNBTOHZG_XmKY0ROAtgbAAvWGZO3BtTrcPW8gp1ObgqaS"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:45:53.828577Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 2,
+            "turn_id": "e-0924d049-cf56-43e5-9f94-223d7d8b9292",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Dobro, onda stavi 20 osoba za 19:00 na ime Jovan."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:03.143388Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1309117",
+                        "args": {
+                          "time_iso": "19:00",
+                          "restaurant_id": "r1",
+                          "party_size": 20
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a1-UC2qap9KwoSP-PQsJHvR0FfGxO7Ndv0WeajL2LKQ-_I_HPfWblA9a9mysReZI0dmxJAaoF9ctTB3pfkyOV7NyL9qbiLdj4WYjpCxq_A8igM4ttCMEIfL7Bvus2g9VL26tUVU7m6gNc-pn34xUabYsXJzL3FKFCKwehPahfag83sm0ktRW7Ul6-dMIIpNkhtNR8cH-rUyOGUgITUZODtIcA4WPJaQSSW_f-ADgNes89JBYuJ0zrMNenXoEx9zdQXN9LeXSQDmXLA8qkfRuv2__mdPiGeZARGUP9JkdYM0W9k-rGgmooYJBEW6UTrGN3fnz9OgjEkMGxaMLoo1VwedR4WxfbNu6XJWHYGQMLj8nkc-LMRV14CXKCHZEsS0qYCcNuoR3ZkAkbzjF7Dphzbkz56q0-Xjzh3h1k84GQo1hxqgGqAcqjT6VnY-oI5oIaZpOxICCziO_7Ufm9P5UlxTgRhk1XDVScw4NYwX8fMszzvBx2QexEAAapBzxD6QK18uaAHgfzj-YzZbFMBfeKsthvptorT7nHSLoa7P__FmC8tlqLk3bSdMe1etJrLyQ0i9ddOHTFVatY1CkS8FjNdAou1GANRRhZg7mc50OuscuXG6wNN3yZeQmm7yJcOYRC97VQ6VMatGgEY891D_EIRzEaGv5V6d6dZZjhbPab36DxM_zwZGsp6ZUV9Oyx6lDJQwOgVILLfYfTNpI8ctkPaX9xVP7egxgPhObko3zp0fzgKJdErLdkEbhXtaUPaEfKR5b0o-V8VjeyOcB0Fgh"
+                    },
+                    {
+                      "function_call": {
+                        "id": "call_1309118",
+                        "args": {
+                          "party_size": 20,
+                          "time_iso": "19:00",
+                          "restaurant_id": "r2"
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:03.143388Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1309117",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "call_1309118",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:03.143388Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Oba restorana imaju slobodna mesta za 20 osoba u 19:00:\n\n1. **Kafana Tri Mačke** (Skadarska 7, roštilj)\n2. **Kod Starog Ribara** (Skadarska 21, riba)\n\nKoji od ova dva restorana biste želeli da rezervišemo? Čim mi potvrdite izbor, ponoviću sve detalje pre konačne potvrde rezervacije na ime Jovan.",
+                      "thought_signature": "AY89a185neqeZep0HObVN6k_YK6Ad1TcqX_b-sf5xPfcAgsYEpXVEhzwAtkHhlc216VNnka6FU6y52X_FO4SGajmqqWR1LUNC_O8yt7_Bcz-TV9qclG2uyt6gNcJwaOSaUnor3LfkPTb4gZSbEeYWaWbubF8dmw3X3DNSb59U5h2JOwtdcfhAbsxfbjRQozzmH94Nmm-Kyr1Ghmvo4GIjaFQE6ZRYY0XKV2rghud0gRz7gbUeR4aXkCFedUSyyGBoSVyKHwkn48r5Czd2JU3D5CT228WJZLwhMzAHfMOJPIQLa01pKio0pjS_s4AHoz62Xp1OBmozJmgwa8U6Rli1D5Own23-4YgPHbO3yT3bfbda0pEflTul3UskdOPXz94YKWMYdIrxagTCNP5BqDpAkdojbGphCRQJ4VT6LYvjfok_9931bmUQk9tdPobgGHEA2N73x7amkpq36BTa3yyG5xQ0PxImS_abpomnXAw6dZgDsAjW_P7fKFJ0A-9ScYAm0D39MiaVGkrYWqXZcVr37bcyEaba_OxpjyYXZG42hDOM3xiyCJZfqaQIP5fRQK3leshv-RMLB7Zq8Qr39NDtNzkY2PKz195E3VddSZ_5cJaZGT1cNAUMPX8uTUvfLP4MiHfooHQ0tfhZ3_Fn6RWbPw2jRHuXSRB0wbe4nveZW4fSaWHlrs2MGGQzefYVazDx5nPYwsMoYH_13ts6ZA7AgsLchfCzTPBO5oCcFLRNnr9mCRt66ut6BniDYMl-yeGAll3vLcKuC-AvyjJ0_UagB_rhDSZcIIJDaylLJToNi-Gd9SptGF4Afv0LxUKCYB7Nf_yw86JK2PRXNknQkoLCS9Q2tJSWesrIAbQWuO67OrsJOVnRu0Gp4a76_Qc2Ats_kYWRlxzSm4z09BajJlGs7VWH4mUmaF_Mg9y9Lxk_OOiLQ1__VHTwDwO"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:03.143388Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 3,
+            "turn_id": "e-23757ffe-83e8-4449-8f66-eb2772171ff8",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Kafana Tri Mačke."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:15.393221Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Molim vas da potvrdite detalje pre nego što napravim rezervaciju:\n\n- **Restoran:** Kafana Tri Mačke (Skadarska 7)\n- **Vreme:** Petak u 19:00\n- **Broj osoba:** 20\n- **Ime za rezervaciju:** Jovan\n\nDa li potvrđujete ove podatke za rezervaciju?",
+                      "thought_signature": "AY89a1-HK0U2FQAzCAJGara-K_BMyK4t1zCv9RplMiDj53b8kkz2xp1oxshE6Oc35iezVdBRzB2-YzLQImS3FAubCBi7a6COjq7d9e6FS_F4m4yvW4rle_dWvkEX8uZ7BnPJTYhsedzrZf2BF3MF4vgJgV7lRB_b6xpew-A_HYHmdue2aZ-e0maCM2w0s8CMFfn5NxlrTZOTe6KN6DnRMgI7iZxvR33S7eB9q6KgnwKyDL8P9bSifrgswCUq2LNzHiWQqIHWtP74wTj_ExNn3T8y7D_cVJHgpOLOqDh6s1YZpVn8Nk6nLzF2u7ZVyVfNsMEALChKLrteBsbFPsNXZScyTmhS_vrxO0Xw7Vygh3n28ZTJfWYut137u7mSAV62d3HAMH7aPXKN_M6B3dzHSTcZNPVXvbLAYpIcG19s7rX2U0j-uUsXGIFkNxyMJCFJ6makcm3Pd8YSm5Uzt6tm8ahrMFIvqh76mJFA4Q83IBfZr9gvwX8OZvcS-rV1tO-D1urf3MHD2SG9YLu_TrXYDNaWMnYW_0lmCMeJcfQ2-fi86WVsjz-05kv2DbirIdCb-pOuf7NdbDacPnEk8Zelrgd4uyQem9_q-sNv-rgFL0fqjva3Oe84XUd1WqzF1AFiEJxDCS0zPHlYElceu4X0wH7xAECJ5HvnbitwfQTmR1_YjLiWZq4B42591vkIwLgPD2dFLn4skceso12K-P5I166-0RcuJhRzLoxVhHBbcntAoxzEUp7S0y6VCLg36Z1JK_cp3JJTUJBp3do6kL8xFeJug5ulq_hODe2lgz0ZSsuHqu5FbMjkunYMlidOVZ1tt3gSTwvPTzSijLmjYdge5yya5pb6uVWGWNMYAbS9Wm2rr6DgjRBVlV7OHn8xvudaaQVst5TeTxo6AAkBel1Ixz4q32lBHc-D0uV4mG5DTlUQg0lAqDJqmYZizP_J_kggwpP2KlXEI9TKjvwbE0wK4MJFxBlPrrDNTyCOjjGT31TjaXEpaO5ohn3I2yC68dLAtjpC4z3fYemRsfHjlXv7zo9cVqF-pZxqLhnbv24Klc-ueKltr4G3rKfXyi270Rpic6YYXXn5Yl53mhI53-vFu8xD2Vi0rcUUTknVJWw-FUEMIhLy5WVROWZNLAp-jqqlFp7CIpcAONV0uwfn8k53QdzcfHNm3DNnER_WPCTsoqJ4ZWi0F_wQcjrkkla7S7tAlZBDahibt578WFfdQFZIVMhqin9o_YcGryl6k5NQlF_ePUv861Gpr5PdBTzQjcPs8WG1XWRsc2RzlBgtJzOIUX-JwlUqW4eFR7yEVHy8attPNaP49-xRyKyZdZGevNZGVR95"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:15.393221Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 4,
+            "turn_id": "e-4b8a0d65-b656-40f0-b7d1-405a903dd41f",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Da"
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:19.530148Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_103162",
+                        "args": {
+                          "party_size": 20,
+                          "restaurant_id": "r1",
+                          "guest_name": "Jovan",
+                          "time_iso": "19:00"
+                        },
+                        "name": "book_table"
+                      },
+                      "thought_signature": "AY89a189Yy-1ZrAzwYY9cI9wRL2iTu8X5QVb1_hk-tsnTbeRymsXyUfFRyHCF5-sNxA-gIVwQRNCzIWdhHFW_hRyaoOpMIVrFknnQN2rhZzcRR77BABBlD0bd1MF52IzfYifb1cY9ht-FBHfS6ECtKYr4Ab46MLzJpvthoQ2q2xE79hVjTsY-Vbcrln9wh_sSamrHbkyYlMM0n86vFzXZbmbuqsX0BlHHwVMndXO1ciyKGl4zpQU-K4fOqKkQi6CjNNQiNibhiCudKPfuaYpNkuC039t0cXRud9OlEiI_XxAgKtvRB3Iq-2QqS-T361NSWWFS9RlEtxrb5AtriJPp8a4pfL7Tn74HXX0wKkmga-Jg3RuobWfr0s27cYnULfPgPWwK_ERnycQbbo3wthQKPZy4VlQiB4kyjEJjote4v5AZx1KrVIIPmftQI_tzev5h1lpicSEcLAZf6er7sQ="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:19.530148Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_103162",
+                        "name": "book_table",
+                        "response": {
+                          "status": "booked",
+                          "booking_id": "B-1005",
+                          "restaurant": "Kafana Tri Mačke",
+                          "party_size": 20,
+                          "time": "19:00",
+                          "guest_name": "Jovan"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:19.530148Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Vaša rezervacija je uspešno potvrđena!\n\nEvo detalja rezervacije:\n- **Broj rezervacije:** B-1005\n- **Restoran:** Kafana Tri Mačke\n- **Vreme:** Petak u 19:00\n- **Broj osoba:** 20\n- **Ime:** Jovan\n\nŽelimo vam lep provod u Skadarliji! Ako vam zatreba još neka informacija, tu sam da pomognem.",
+                      "thought_signature": "AY89a19ppVLnAwHMuh-9Tiw6kwTI8QBbyYwf8b2aqDqbBjWErCjGRJZUZp8dc3A-F0-FqTYnVCiN8u0aCco3Swockl7BW4HbjEv6nZswm-QSYSRFPyGHlOpdt9_63kpRKXnQa86v12fHUnJvU2BGoNgb8pb4drKn8ghB-lQAl1iNEfaoe1w2gaifwprusYfM6oSuYAsNrZNvDRmQco82kYCbtaEYJA7xRruR4k-Z4OumPbacJVLg2Q5ftqjIHexQwehtNeKhZX3VBTiWB6TFHPQvWhmHXqvL5eJUHsPJjB5rCdsJ7bCg7QNP5MHOJQ-QJX_9Z6Y5NmMxjcldDh2UbrfAyYf-zwHfDiif8kMdgdeAEJdJ_WmS9oDChGM3kzuQHFyhW9GYQ0aGEHFQYpqwa0DTmEhZ55dPcOjPPBGUEV7OCRi4mR6Fxqi1"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:19.530148Z"
+              }
+            ]
+          }
+        ]
+      },
+      "user_scenario": {
+        "starting_prompt": "I am organizing a big dinner this Friday in Skadarlija. We need a table for 15 people at 19:00.",
+        "conversation_plan": "When the agent suggests a place and confirms availability for 15, reply in Serbian: 'Ipak nas ima 22, molim te proveri za 22 osobe.' When the agent explains that party sizes over 20 must call the venue directly, reply: 'Dobro, onda stavi 20 osoba za 19:00 na ime Jovan.' After the agent checks availability for 20, restates the venue, time, and party size, and asks for confirmation, reply 'Da'."
+      }
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "You're welcome! Your reservation at **Kafana Tri Mačke** for this Friday at 21:00 for 2 people remains confirmed (Booking ID: **B-1006**).\n\nHave a wonderful dinner, and let me know if you need any further assistance!"
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "2c4047dc-5763-4a15-b538-b26fda70ec58",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "e-287189b8-ea17-40ec-855f-d3dd63dccab8",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Can you book a grill restaurant in Skadarlija for Friday at 21:00 for 2 people? My name is Alice."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:24.760062Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1948900",
+                        "args": {
+                          "area": "Skadarlija",
+                          "cuisine": "grill"
+                        },
+                        "name": "search_restaurants"
+                      },
+                      "thought_signature": "AY89a18mlM0R581UuSwFCvO07_QBSfObCnoo3xiYm4YHkQPO8b36j_5UQrfhwcPTrq1h66uOCNJ8JAhRLN_nwz4WObiosE968SXZG6vYYwpBpXHg_sj0wxSBXC1y2JpNxpnoEnA-6i2toWCjxbmv8wt0BWUYVJ284hNkB0sRfVnCL0gfyT2Hc9oxNKqZN7OWnXusreKT0CmmWyLZgvKF19-syhk9HtwScfrMIY1e2CWFkVbNCj-b1zk6kSHW7a4zJgGi-NYSVFmRFaW09tEu6uj8wy67FBZnynMtTpLuEz_mTU-ENQ1Sn_ujLlUuomiCCxkyPz2cjG6MyOZemNVdlMvL8XExWu7S18dvcP8bN71_nFPvVcyu4Uwaby_t-AM-MUKqPXsqCMZPUNxr0KzIQBGYPPoahx0iD31Ox9gztNpTifTSsqlfEuqfDR6zOMkgqclJdgWJxdXHTWEjKrDks7Zn__g6JDATTTnqb9xQguJxzFn-rtveZkL6MMiR7PUT9safI2Ewaj_V6viXSh-fyzGzW_ZBKTpdz-MB2SaVkrRQBs_UDVrjgm8RjgMr-oz3rMjp_Y6xBQF810ZTl3SL_OvA-DKBL1iVKdIEoZP55h1TlIrXFzvh360t1jv2emTreNgHrGh14WRovVczlJsC5adHYgUC-Hyp4INhbUv70PA80CAMvunMQSmMj501tIrXcTsS2zZylGJ1DDDseQirJT4lIxscfd3qJf51LP1Sib8Xrg=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:24.760062Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1948900",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:24.760062Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1623473",
+                        "args": {
+                          "time_iso": "21:00",
+                          "party_size": 2,
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a19YeCwAG8KGjeWmgrBe7AYquwGHEgn7vJTw-gOU0YZbX807Azym2FfJrLqYpISEvjg7s4T4S_LSH0pa43-eOG03o1m-nAzteBoVEMdKMHV8f5iapcL10Lkp_YJvb3v1pKBRpzU-XTpnOcLsny_oZqEdZJIOWGgAwQ-MCPeY2VYJF7kXm5P9Cm0duD0ZwPTIMZ3ZSdXHrYorEl-L0Cfp3alPYFHwwPT8hkwgDzoh6nvk8ilGn5XFhmqOIalhn_8piWw7TIS40rYUxmZfATIeRYhN26KaAG-rbS_wFZGSUyqDld2NRTI3GZgYLIhhA2cNelm78v4OSoQ-2GXHmhzFGViyrJOGl4BaXp2WywsrsTgTHh60ep0HFsMPD2eFRJgUPT4wHkayDULPF6211b18eGg7_-42DGjntgr2N8rn0xZ3up4RW4Ji76oXPPDLJYcTKoXTdVZYfwq-aqjAvTyiqQbh-u3277RryelqbBhJb6jGbu-xS0eeh0XT15uMXLz7maqEQ_Nk1R6UJCkEqvV53QyaWwmZnNZq-DWp3gdny__STOk5FafykDropCp4YT7deWT0d2cmg9VApdSKAvYh82oP9KSsMMPZZf4w7ivnfehCZfrniztJflW--LII7dJazx4Tq4OJooK0ZwfmoMkFiuIxqA=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:24.760062Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1623473",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:24.760062Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "I found **Kafana Tri Mačke** (Skadarska 7) in Skadarlija, which offers grill cuisine and has a table available.\n\nBefore I proceed with the booking, please confirm the details:\n- **Venue:** Kafana Tri Mačke\n- **Date & Time:** Friday at 21:00\n- **Party Size:** 2 people\n- **Guest Name:** Alice\n\nWould you like me to go ahead and book this reservation?",
+                      "thought_signature": "AY89a1-BxaWNjzXLP1MQ3LS19Jlnj6NQl1-44K6byXeppI-gjIduu95H3UfzVGT1bc1EP3Z193yfMf-ytIstHFNPGt1crGbwMj2whp8fsfHA68jB1kiejMuDvZA5bUmgw6-nqOHY8KK7lqtMK97nsuTJ4GD_OLgsi6-Rvt9z0TMZcBaYzVIjt9SSYEjC2KMIcwqFBY1-MbjiScsKduUyGcJ1tGVafuplwbVQhmUJe5C7o0VVcPyvn6DH8xxZ_3a4QYs2gIBI2ApkNXEDHcDRNP1ok9IPBIBRs9GeLY98cvIlvNlt5FWiWDxeR8XG-1iUkHEPkI9vRHcuRJMuHe5bF5oRXF4hUT7AHnXX_glX-7twM631N7-vO7mA271oRY6ZyCLf4euVMr2nDSP9zV8q1kpKebCQoVPlmh6fR2ToYPivDflZkER6SQHb_r2crRvpJFYE9p26-L-J96TZCHlWnkdc0ySguvkBgJEW9Eb-IrjzL_JdaO5sygPQAhpSRKeUBYBDxLdmyqlETHRDH8XC9_PpTWEzprnthdUBX-AK-8EHMYpPxP_fJQ3-UG_PB_au-k9cvyPmWWDpgYbrwOe6_-UF0defdcs3h2adHQ-KfNqGKZG2VYhZ-z7BK4jSPk3TgRLekeUfXKJEaTJoKE1Ylphuc-WJ-vFWM1KUbRkxIfrMg28e1-UtjRvsRttQh6P1kfp2HUbes95AcrTAaSOaQrFreIwBGMHB86tTzRDzAIAkZ03c5UjdGjcZWBH_Qnj7QcUZWINLgdZVfyw_fmxNDJXf42rw_JDVMm3Glir3Rld2_lwU"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:24.760062Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 1,
+            "turn_id": "e-ac03f37f-ad84-4949-8a3e-3d483b71c5fc",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Yes, confirm."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:39.951829Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1997400",
+                        "args": {
+                          "party_size": 2,
+                          "restaurant_id": "r1",
+                          "guest_name": "Alice",
+                          "time_iso": "21:00"
+                        },
+                        "name": "book_table"
+                      },
+                      "thought_signature": "AY89a1_8ppVIdOdQBxkVC5ZhVBQwpTx7TOoXQMkWAYjC087xc29REvg77lrlxgOEwFp8ZT8IH4uDQIWJZpJj4AuzuQVKTlVasoumrkuwwV65yW3GmMX6g4ahcLwuOdOA52tEubR1VeiS33_jyyWuS_NPkH8sEc6GqpZ0pm0yJ7gnR0bAyPJc92sjJ9uCkgdmwn5bOkvkasmV_apMZSbSLHN9rIQJQToh2t-O6LSYX8PlHDAZ7xyfruDcfMDzsvvc3eMYsB4Fk4sES_pLkUmss571-mxKT5okIk61gjbBI31vXiynRBLUmhYKQT6FVkW4aEkF4hLBO5H0ZhVe2nRokL-Z9njFpfZ2bZsjcwW2PDw9ZdD25w0EwhwbyKnMyDtJemeTN6vGKFS7yJ8T0EZBqqHqq3SCWOx_zoLs5AYu044UYwByJiA3Q47w_jTAsYBtdNi9MWrM0b-CItKtEWG1Pc-FtQoNoX0JbNQau6t1RS5iB5Rcvzl2DVGKtgdKKXX6KVhijBAEGys2GGJ1NiSvEGUsffFbJJvNbAofzlAbuRNh9OFc7ZuLpS6Rr3cR6ENqKZcdc3atfaB1Qto8kHiQQZGFznJU1toiuxYj7Oz5RUcrGnD0m2zLgc3sbOyuWOZnqw=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:39.951829Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1997400",
+                        "name": "book_table",
+                        "response": {
+                          "status": "booked",
+                          "booking_id": "B-1006",
+                          "restaurant": "Kafana Tri Mačke",
+                          "party_size": 2,
+                          "time": "21:00",
+                          "guest_name": "Alice"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:39.951829Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Your reservation has been confirmed!\n\nHere are your booking details:\n- **Booking ID:** B-1006\n- **Venue:** Kafana Tri Mačke (Skadarska 7)\n- **Time:** Friday at 21:00\n- **Party Size:** 2 guests\n- **Name:** Alice\n\nEnjoy your evening in Skadarlija! If you need anything else, feel free to ask.",
+                      "thought_signature": "AY89a1_hd3icU6vtFI_GtjoaxziCk1jMDP2_UOHBU8Rg1_-bwS7fdRLMw4Smww9k1RKm4LsNDHQZ3ZDKYsXzHpXX0wwfL-3E9rRgXItYMrNHgGscK1cf615n863S7SVAIkDgj6-f2JEoQkJKlq_5Qs2wHHvkgHBpCXpWhfpZqB2DMTrKvEXYkSlpL1rEBqAfViGvWXFUa9nN-K-Xjh8i5gRkoLoApA-8g_t11hZusARGuixGbfh0tcnvf-GFNJrl"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:39.951829Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 2,
+            "turn_id": "e-ba5d4a67-7bd2-42c3-ac78-75bf0deb3d85",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Da li imaju veganske opcije na meniju? Ako nemaju, možda ću morati da otkažem."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:45.846373Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_340919",
+                        "args": {
+                          "restaurant_id": "r1"
+                        },
+                        "name": "get_menu"
+                      },
+                      "thought_signature": "AY89a1_TbcK19MWcT-hk5waqDnmLbbVh0TF5E4CBh_5cx0s9FzPc7yQOtqvQmr3fzH1fRSJZOY73d6nNcDenINJKikNtF4kbz8sL4WPf9-YNWTdmQQ8ECoZMEBoeW1Qu26gOSSB4gC-itmWiqY_ZMY_IxZrWd7wXRzsIBxLXB9_IPZf8XQO6OW7mhGf294OZBlje13byAPc3m1BCseUk6aV-fqaZ781n1bmw28jxwJND5p1K_MBFhkzTQ9IFjgDAtF6SkIJGReH2c8MsSyrQGnN32CqruQomsDQ1YCLrcmTHR5W3bJWSt8BdGGtmGTZnw8qhymNjVdRfnTqlKp-JIqIKjJg8fbITVKldKpydSDIoqCA5Pa803dGKk_UA929fYlPvVNxta3bGrzhJWLNXwJ8j_bHHTWuD3uj2YGtR1Llg2R_zfFu6WmQZxeTYh8VeY-blo1u64nCQuyA2VCdWox-3gtmzmXZmSUEgdS00prLy2ig74gFpIHp-KdR1qZ3cO3HFFwvaGO-2d5S9D_3a5gGRDWERXywRUTGVrC_zbSjHOZojVNdFKY071Hw8AVsgHljH8Gy605qUriT_pfHXuDzyVbGHHsGBsSCZU3e-B6J9du5OcV87jBWjROYe6jUJxUxqxAL-QR5uSBiyipytGu1Kxs1z7v3su0cHL31AZF1SYvhyoOUToZTLcwvrkkSuiqHJ4aymmS3HUFBm_6lUAS7GVhIx0CVmn8B1LivUK9VfKtQhYUoiPbE_bQrOTCyKLBGVDzlDXlITvCgNifcpByr43xRETW4DZ-1PZPRH804x_Uj3FfTY_Bwy1X08h1J8a2Apvf0Y66HB7Q2VxPwAg1QHXOUklDl0DqymISMi_guPNNES2nq-xkarcS9hizlDpV9DTJFEjcBVSFkYPXPJF2WklECuBipLnX_HK26I-Mnd9rJ9kyp92w=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:45.846373Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_340919",
+                        "name": "get_menu",
+                        "response": {
+                          "menu": [
+                            {
+                              "item": "Ćevapi",
+                              "contains": [
+                                "beef",
+                                "lamb"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Pljeskavica",
+                              "contains": [
+                                "beef",
+                                "pork"
+                              ],
+                              "vegetarian": false,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Šopska salata",
+                              "contains": [
+                                "sheep cheese"
+                              ],
+                              "vegetarian": true,
+                              "vegan": false
+                            },
+                            {
+                              "item": "Prebranac",
+                              "contains": [
+                                "beans",
+                                "onion"
+                              ],
+                              "vegetarian": true,
+                              "vegan": true
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:45.846373Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Na meniju restorana **Kafana Tri Mačke** postoji veganska opcija:\n\n- **Prebranac** (vegansko i vegetarijansko jelo, sastojci: pasulj i luk)\n\nOstala jela sa menija:\n- **Šopska salata** (vegetarijansko, nije vegansko – sadrži ovčiji sir)\n- **Ćevapi** (meso: govedina, jagnjetina)\n- **Pljeskavica** (meso: govedina, svinjetina)\n\nVaša rezervacija je i dalje aktivna. Javite mi ukoliko ipak želite da je otkažete ili promenite!",
+                      "thought_signature": "AY89a1_0Z5D3tOlVQcCtq64NOy0F_9olOs85_NDdbDw9klvOpkyTLe83lrDlBohHlalbJIKS6MIx-uXtv0M_UnJrAVHkHF1boDQkoLvXGKZalqANCvFizsUCbkocqT_0Sl-kq-8r2gyu51qG2UD5K5eTbsQszNs7zVqf_YqRuClRSsUD8qPyDeoFxrk2rrXVHW2kildzASgpbFWi0Jk_loMf4HbO6ZQqVCeQh6gSS8zUk23XlMsUOc7gobmsEQftwIl_ejgDCSDmlFO5-9cGyRfP83NSQiEgb2OB03HnSzOckXGs_Im8npaEbd3KyfK8IEP5I1xf4juSlfGXyHDjJS_uYy1qFFpwi9vB-BwX1jN1bI_MWS1VBf43y8zdScQtPsPjH0-9iuMfTlHH53aojLWU6iemJtmkGuNlrOTWXSJjlzk2JYEVXc_h27BmBGRbfpPhcmRhUENLlhzYy8shT73neXxSP-RlEqZaGTHcIQe5WNv4lRNJup5VqWoOEKJ0pQA-YClkgUV7mauMs8Zlb5k11PgABsmcUuREnOYq-gFVs69JvjsbsWyZFPpa54LwmvsGUvP3rTdfvSPsWDlcpmxmePBHmRJZsA-I7tGhIhLlB0KA3D5ip-wNAi1OULGQBmn7VPX6Kn1tMUH9oaRqFDlGc9mvEvBJWv3UFiAB6mkgc7eeLtVp7uK5cV2wW58pn0cIkveSQcD2K9vTrBZlatW9-dRF5aIZW2AnzkiTd8ctsPVf4TGDPvTTbLF6oEcJPBlf3cKACx7sx0EryIghRNuMWKJ5IYo="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:45.846373Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 3,
+            "turn_id": "e-cf8b507d-a003-4cdb-ac81-2d2829736b86",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Okay, thanks, leave the booking as it is."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:52.810302Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "You're welcome! Your reservation at **Kafana Tri Mačke** for this Friday at 21:00 for 2 people remains confirmed (Booking ID: **B-1006**).\n\nHave a wonderful dinner, and let me know if you need any further assistance!",
+                      "thought_signature": "AY89a19lYGgJcvT6vL_x9IzPOnQmtO73qOO3EzotzFRwzgrTK4fxMefWZYqnjYGUTaW8qtLzZKitEQ_wcixm3QbtUebxRDw6gWwU57vdq-H0rSEPzwUzOQVCOKZRXUyrOmqmMV1CnksfUqra64uYTmmsqcUlMV7wk3TZ0gj2fDBVJpXkvTJxcxLuKvco6-sEaXk5aufyiE2tFV8R7jrlfcNtQ1v4moJ20mfzo8PZsYzNa1NQTAj8nrewwSJdEotdqWG_d-WzR_JUo8bNEwRK5ud3eK9n9cvl8mYA-N5rrD0NqzE4sOR9tBGH43ZP3b8ZnlXAATKv4nVmvkYj19p5yNF6TeS-0m9soiZ55AJvE78="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:52.810302Z"
+              }
+            ]
+          }
+        ]
+      },
+      "user_scenario": {
+        "starting_prompt": "Can you book a grill restaurant in Skadarlija for Friday at 21:00 for 2 people? My name is Alice.",
+        "conversation_plan": "Wait for the agent to search, check availability, restate the venue, time, and party size, and ask for confirmation. Reply 'Yes, confirm'. After the booking is confirmed, ask in Serbian: 'Da li imaju veganske opcije na meniju? Ako nemaju, možda ću morati da otkažem.' When the agent provides the menu information, reply in English: 'Okay, thanks, leave the booking as it is.'"
+      }
+    },
+    {
+      "responses": [
+        {
+          "response": {
+            "parts": [
+              {
+                "text": "Your reservation has been confirmed!\n\n**Reservation Details:**\n- **Booking ID:** B-1007\n- **Venue:** Kafana Tri Mačke\n- **Time:** Friday at 21:00\n- **Party size:** 8 people\n- **Name:** Nikola\n\nEnjoy your evening in Skadarlija! Please let me know if you need anything else."
+              }
+            ],
+            "role": "model"
+          }
+        }
+      ],
+      "eval_case_id": "17205b3b-173c-44d4-986f-74434d16f723",
+      "agent_data": {
+        "turns": [
+          {
+            "turn_index": 0,
+            "turn_id": "e-fd332b15-798a-491a-bd5d-202872fc9fcb",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Treba mi sto za 4 osobe u Skadarliji za petak u 20:00. Neki roštilj. Ime je Nikola."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:56.597715Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1212185",
+                        "args": {
+                          "area": "Skadarlija",
+                          "cuisine": "grill"
+                        },
+                        "name": "search_restaurants"
+                      },
+                      "thought_signature": "AY89a183BlDurLsT-pc42bWqLReUeDZ7JTCGFy3QN9b3VkulX_p3N-V8isDyfQaoQOdPc_Bq8Sh7dk4ziB-jzPXTZOopceLD-KkOEd2qQBWjaWRtS12nHzdjs94qEbnr0UypNdm4asf5tGtitW9WEhiptlhkrmqWH7lJJEE2w7av1XFrtTft9qisHfO4Dor2fKPGC4EDhVyCLWYq2olQXxfgUktPkLRruRJL5Uf_8ngyVqeeM2QxZ4m6mCMAlVMViN5xydQ8Ego07u39yjo2Ozlslha30odTfZVCrVmMdbjRKynusaCgC2jWjh6gKz0fa5isg-7byHtuWfyA7beloB0n6lkSHYy85lIPCqFokNJjhhzlCRuZdgTqLuZBCL_JxGleYhjsN2XHF0sQQ4WvI61Ukmpw-JhRkPYM9wjarXs53elbiwD58upn7oEbsgrdvxLE-SrKIAR1iy9lhaUz-Fuq--e0GLQ4MrzBgS_lZ2zNIk2qeOnYs-jCFU_aayczTrRm4zJ1bc3X5MovPoOTewAwq_4Xds62NALTC9Nwrt8AxfPhqqaNzhM-uhFnrirpNG1-eHhgxaJ88J3NmfLyP4tMlU5MULNrDCw0bGfCeN26zTRHC3kPQY-WcEj8JIgm4pNACJM9Qkn35tRsPHlpi9TgDmS8vTAJI3ND9Y0xhd2bUUWUBAKWesMUkmxtGpJ6MJWQglC5tHed928AyK_df8j1bUwDCaJhPWWMdNopEl_1n_o46NfeEN2IeyIr6nTRuc7uolzfgLx0E9jh16vvJ9fugyndf_kKb9gJTgX6inMz9xKuBIin1EDE__FWtEhpWugzTzCue_TN3tnUGvrXZEF7oF2aPwgHlGwqyNlbLBcPyzswvWtLZZ0xu2_swPS51858e3i_-nWYLIsvXk6MMWdlYJ5sipt6zVyQbXLes_WXBDAFeZAjxOM68Syr4UqT76H21zlQ9bApk-ATyZ22IMzZNcHm4V0Z-Wzq_cQdB9kY27crjibhXw=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:56.597715Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1212185",
+                        "name": "search_restaurants",
+                        "response": {
+                          "results": [
+                            {
+                              "restaurant_id": "r1",
+                              "name": "Kafana Tri Mačke",
+                              "area": "Skadarlija",
+                              "cuisine": "grill",
+                              "address": "Skadarska 7"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:56.597715Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1874003",
+                        "args": {
+                          "party_size": 4,
+                          "time_iso": "20:00",
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      },
+                      "thought_signature": "AY89a19frvUJBxPfXa8Bt1tzYC4YySBcedgr-kb0klkem0AKRozVblUI4vSrMRtjijOeuihit7FZlzOwcELawUu1zciMUEnzheWQJmnsBa2ahRdDaMWxTVWpo4Ld4MEC1w42j2Gh04_jkQ80eiAbyR-ym9nkxou-9nfOHTx0fdPSjyOgePcRuxSz6cLCQCHOfwfg2UbATSCFvXu3YZxDxG2okW8kWiWG2H6cK-repRn1iBk-Q0NDc-yhct8fXxaInGByXvWweHR7AMIx78rf0ttskA0EkFk-LuAgMJXwCNyesW0DB9NPQ1hMcVk3Q7zbeJaR5oOz8gP1LwivV5Kj7CUVqaBNlCIMoYcnmpcwDqIFtw64yIJRlyJpaN_g5ia7-1arLFjntdj0Vpc1_hINF8Xz3M_UE3OOscIkgSB_ItV60FBLuwykA1qXw9rekQG6wHGzaLWx_FFt8V0GGCmWp_kOKE8xc4ykcVYvaZCjkjlgnSDhPqYPygb0Cy0tO4_mF2T8lj3nQndtYlV-2SJZVq0EtHrcv64v7iozdmz6UJ6TTcXzrxXNfjZv5wyiRTwKhUFQMNkrEAwlRp6jcnJk2dssYIlViJk5nGLIWj-UsElK5IZIt1ruFHU94d-7bctl1PlP1TrCPRKtWcEjaPlcvtkzltPq8BKkNLyeWqTWOVibfC5IqdkLumPiE9cUSuoW3SYuTO7mxGn1kYIaFJM87z4zmNlfJp0GYbWDDFCi1MMOngB-emHNWrrIRIeeYmhDobGuaAqyBqBQ_a2i-IJveBpY1qVLkOvwioUpanftWHrkx8nTlwCxEwxw-_PsJl00hN7YpH5-vN8="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:56.597715Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1874003",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:46:56.597715Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Pronašao sam slobodan sto u restoranu **Kafana Tri Mačke** (Skadarska 7).\n\nPre nego što napravim rezervaciju, molim Vas za potvrdu sledećih detalja:\n- **Restoran:** Kafana Tri Mačke\n- **Termin:** Petak u 20:00\n- **Broj osoba:** 4\n- **Ime rezervacije:** Nikola\n\nDa li potvrđujete rezervaciju?",
+                      "thought_signature": "AY89a19jpARVYtUP22OeJBRXlzzuudmfpbBIoznw_dEqyVpie_6WhHeEidvqzd4PC7v7C3NWILWORwYXtSEeCuhXQ2MuZUw9Mw2qsLfh8MMVdFm1zVdjfM8asYbTPzovZ6ihHkDcybgKM65we7zOdoa_9_m3q2ryNwcVQT1WRAGQEA2YbQayIg0cUWgD2M9KiZky59J00dvkRHmAO4v_6Q28AX2AEMb3qO-fejMvYn-yIFb4T6wtDMAlahSLKJo2cozxFANOL9Dw262mT-Wu34LIFAUMq0MA8lin_RhlCPLLEl-oGb1-SGXoQS4q0mrMac3-0gJKUpJJxTbv48MSNc8aqh-GCXm76cEogu52uPXG0EiVraqJXmJb_M2PlSUdJ2bw8JPLK_fJvNJMV_5p4o87WgzrarA9WvCoM3vx9WssnZ3IaujqeAtoJeIrYKLw9cLQQ1qDb13-KQ3dY1CDyz3vdyv5Zx-_sXXByLpC1cepqonM6wTRqouBoTIvbpOndI8R-ovtdvh-yYUo0x73hnLmm87yKTxXTAgaIjGmOM6dfd-pPIiAZSJpf7v3zGR9VPZreEla19WzV1SwCWDH4PliVNTxN0V2jKcmhLfg4lIjKeD6-pAFMK7-iRYBlaPBwR-0-SILPLnDxFSOpCKQfoAQW25__y81JFw2WeY7TZG60dIfdYk4iB_fCP2sGl1lyZVuLpyI_F3jTZP5hpHBn6k-XsitfWYWqhtGZsBlX_5CqYEpLYbHeVdhxxZD3r7q7knv0-uafTbZNY8R6uorp97H-w1WQV1r1AQIuJG-81T5dpzxQplMqLO7DLcCNCz4ITR8BfTkSYJscBDgQsqt3ddejJA0ZG_lK7aCzpWtQlgsCUjY"
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:46:56.597715Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 1,
+            "turn_id": "e-f86aa812-fddd-4166-85c3-70d165e4c99d",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Da, potvrđujem."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:47:05.198425Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1686499",
+                        "args": {
+                          "party_size": 4,
+                          "guest_name": "Nikola",
+                          "time_iso": "20:00",
+                          "restaurant_id": "r1"
+                        },
+                        "name": "book_table"
+                      },
+                      "thought_signature": "AY89a18gLwftGl4QmaaU46dqBfswcD9SrK048jsnFqTDopXhC1YKxxc0XqHcVnHAokdQLnSTwSI47uQRRLsGMhsKgxcdEb6wr-FIDleDb6EHBJJfnqKvOyTy2bqI-X_qc-qRS8xwTUxEWEgW4ZY8_wp_WV6i4Iiy5GHLThnitqKwRyW4997jKbAP_AN5jEtzvoCNptj7jXnOFyKUDNOZPjpOP_2VZ4LD0Z0o8sr5_puTse7bs27-mtRllWTt1WApVlXI8PgQpw0IzQJulNhHyo_OeajeG7gd-oVXhdSTll-MVAzQAriopG8Z0bMzrMTTwDTfkRMRBVMQkw_RCAwVE54gOkaH_s8F_A=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:47:05.198425Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1686499",
+                        "name": "book_table",
+                        "response": {
+                          "status": "booked",
+                          "booking_id": "B-1007",
+                          "restaurant": "Kafana Tri Mačke",
+                          "party_size": 4,
+                          "time": "20:00",
+                          "guest_name": "Nikola"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:47:05.198425Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Vaša rezervacija je uspešno potvrđena!\n\n**Detalji rezervacije:**\n- **Broj rezervacije:** B-1007\n- **Restoran:** Kafana Tri Mačke (Skadarska 7)\n- **Vreme:** Petak u 20:00\n- **Broj osoba:** 4\n- **Ime:** Nikola\n\nŽelimo vam prijatan boravak i lepo veče u Skadarliji!",
+                      "thought_signature": "AY89a187lEFreA228t684KPQKHKAYcnIk9xfVrGDZ68Bs7XoTtW9ThDglcSEidcsCd5U0G3MRlctQkXvdi9zz2oOhb9vUYGvtwQdSKUbuZ_TFXYL6XSA1JsEUVyg2gqdKn9FhtznxmP2RN88f8BUPu_lpUNP5rwIzjHky3WmBJLV6Aj019g02fex2jZbdsbmB1ae_yWlWefIXoPeNfmRAv81tB8nB_v2uKTaBbt-BA=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:47:05.198425Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 2,
+            "turn_id": "e-91db6147-a174-4b6c-afd4-dc2b49adb948",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Actually, cancel that booking. I want to book a table for 8 people at 21:00 instead."
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:47:13.783559Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_3486509",
+                        "args": {
+                          "booking_id": "B-1007"
+                        },
+                        "name": "cancel_booking"
+                      },
+                      "thought_signature": "AY89a18Kr0wCTp_dKXpRsoMZzvgE4L8QUmMz-NLMTvwmhGJV2FOTw6BWILawBNDCSTuGgAJaDDnhJ1C0725myTJEM2yiwOP_Ierx7paCIJjfkHSCFvAYjr1dj631XOhIXtDHb-BnEFhObH9HYm0gY-NvwBrgoLF5UExzWUYGAdNAIOV4_xuK71RyVCpNK3umcTSvn9pQVakLwHiDbvWzSfhVP549PMB_qLI1BmEbCi4zrGpaY1rAQmNJfI8bMh2NDnDHGEM-T7na3Nxgl_lwwvc_4kQjXEbU88T0igQ47L8HQqZW10iY_97BbCWGf5i9otjLiVMPQ0voCfYgfWqwky5PLKwjKFPAjrejl6Y_CPLRm0dIvdBvY50Ssg4YJt_2X1GC1VLaPdCSgmSU6_Hpka0d7hxgj_jccRvDCp6WbjNowjN14bv9F4gLeo_f_UBpLfCqf6EJEWaebB3NGFBZdpMZgLfaM9XV7PslscFRR1ctc9gDddaw-JbHkzkzGB_Et-f0phwDTwjv9YIYSDqgWO08BA10Do-GmmBI2jLMwZovnHzqw9oQIqBhvPDpNqV3x5mqcsqV6SGRp1mfqjlVCPH-6Yi88OcoXnYbtvhKklYumEt6hSL03yZ-Sd-mL6n-SFmSZ6ddP9kjMjBYu_PHUVisjWoPgmng-yk-3WuGeXnjCoCA3rr4s6ooF43M0T9DXRMhxW06yzYJ6qMzNRhwC9iGdJw4vEoV-F8IO2izt1ED2-695YY3VeuCwFuSmHVMA6bzQ7IGRkJpty4sHJHtcZkDFBBRABvaQ7jIm5EO3T5PAvbV7RlsjcE4hIZzRRy4T5-rX1jVkokgEGgjQz_SUptCg7_V8juiUnSiFzlcu3p3rIZRlXi-CwBrrOiPN1IezyiEObsaNfIW2LYc-nHs6_vUp23XS5tL4WJRslB7BjlFJ_yh-or2NvzJPn2DUpz2sERbz3gg8LsZ39XBvw8lQTKWRN9Jg-BmUVnqB-ugTxpb3pRiTO-0dV-lrzB96zA0TrmjaOgTpZ3MMTzkOP9_iNRofCLD7TPMasSFTrGyqGY9L3vjBF-A17TtQeu4zxtoSPaOCqCpQaMJjmX-pHAcOE-dmqXQMEYuqL5sc_gwFQ-Fr9wF9AG2OkPoG9O1OyzlA2DBtJpfe-9Rb2TWj8it3beGG-zAeIw21Qp65ZyIgxnZi1DOZi8f1fdC"
+                    },
+                    {
+                      "function_call": {
+                        "id": "call_3486510",
+                        "args": {
+                          "party_size": 8,
+                          "time_iso": "21:00",
+                          "restaurant_id": "r1"
+                        },
+                        "name": "check_availability"
+                      }
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:47:13.783559Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_3486509",
+                        "name": "cancel_booking",
+                        "response": {
+                          "status": "cancelled",
+                          "booking_id": "B-1007"
+                        }
+                      }
+                    },
+                    {
+                      "function_response": {
+                        "id": "call_3486510",
+                        "name": "check_availability",
+                        "response": {
+                          "available": true
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:47:13.783559Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Your previous booking (**B-1007**) has been successfully cancelled.\n\nI checked availability at **Kafana Tri Mačke**, and a table is free for 8 guests at 21:00.\n\nBefore I proceed with the new reservation, please confirm the details:\n- **Venue:** Kafana Tri Mačke\n- **Time:** Friday at 21:00\n- **Party size:** 8 people\n- **Name:** Nikola\n\nWould you like me to book this for you?",
+                      "thought_signature": "AY89a19YMQ4zBBP-XkqpSTRYyQv2SqNSfaMcULUOPH5rTYsWv2V44UWBewHjMzHNlP_yAvSgwxHDKf3ZxjB9uWiLzDt9L-7NqZm7Rg1O0D94Y5zE3k3uE_RjN5N7PXXgFN1Yfnp5nFexBBrEaSy2dOwKFz-yXYitqUCeX1A6lgstscjwpB8-Et6EdOioEcOdZ4lrQJRm_D4LSVHuHEqgennFYYSCaiVNuUnilVMlVUZsAfd4DgVN0PIMmZnB0VFLESa4rpJibUZAnpztKZKGZpXklDQ8EjqnOjSFLZuVYoRstLNkmbBVYpOPYdjobI3Ety2I1CDQzhjCZLceQl2Bcb3yIbgsdWBAJE7jzxWdoKniJ-SERS131T8EpInzZwCUJIyYOJuQQDdAZW0mAv5WzWTpVMX1b7XZiUKqTTwzYWt-6N_VkD7tmdKHKInR4o-hqDg5vPV6WEhAYj-829gJ38Loz4QCkBsVoVau_6vhmmgRXhnAQ_xUdTEEDThxEOW0ZYSLzzHIWWFzTzvzw4rffmpLh_RdgYqGS6eYIqoITjgt1RBfP8j6Q4ZO-GHcSqAaZqkDPcnEhZEkqj965DzttJ6rB83IJEkEcAZ461UgHTu4E6SXBV_9GSYhr0u_gi-3LX1IUCtLtn_a7F0znsj780OEHw9DT5_R3xsZ4ACLqRO4HprSBXrz4tED1rnErmD9CfPbhG-B0s5FCJgzm5aYPRoIj03PNtZLiL4wTCd1CM_zwj9hIgOr8vaa9u657lQ3qTXE_Z4t5YkKmmxoUN3hEgbru843rqSUpBTwaPQHEkiRFXXJUx94TprctD1CQ0cpitttZu8wpz1PY_IdyeyogaV-LYu4M6jgIg=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:47:13.783559Z"
+              }
+            ]
+          },
+          {
+            "turn_index": 3,
+            "turn_id": "e-bf4c215d-075e-40ea-a8ff-9a5bbf1b2b9d",
+            "events": [
+              {
+                "author": "user",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Yes, confirm"
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:47:22.845272Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_call": {
+                        "id": "call_1067984",
+                        "args": {
+                          "time_iso": "21:00",
+                          "guest_name": "Nikola",
+                          "party_size": 8,
+                          "restaurant_id": "r1"
+                        },
+                        "name": "book_table"
+                      },
+                      "thought_signature": "AY89a196DU0XIkqOu_c_9cGT0L651S2e0LeqTf7NIi9YwbDGaaQKNd29odfgPN4Bj5N0w4WTa-p-od2-E6EASGQs12lFyjhYaWbdvTJMXULFLJQBs3Ep6fDcb6LpFgVobuC4wUt6RWDwfEMjfIq8bIMK_4Zvpu5t4XVkSI0K6M3U000kpPEiWoYK-IRU-o8yeKa4SUAb-KFNsbsQKQsri2viaCMjaq9Il0fCdzFRPKYXjhOBGqGf-NGz0OL2YPHCSJ6y2LskEZbtTOLZ0rT0-q-eLeHGQCW7Oqsf3o8suF2YwwXnnbX4rXaYH1CQ_KNcrx34aS2vJA=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:47:22.845272Z"
+              },
+              {
+                "author": "skadarlija_concierge",
+                "content": {
+                  "parts": [
+                    {
+                      "function_response": {
+                        "id": "call_1067984",
+                        "name": "book_table",
+                        "response": {
+                          "status": "booked",
+                          "booking_id": "B-1007",
+                          "restaurant": "Kafana Tri Mačke",
+                          "party_size": 8,
+                          "time": "21:00",
+                          "guest_name": "Nikola"
+                        }
+                      }
+                    }
+                  ],
+                  "role": "user"
+                },
+                "event_time": "2026-10-04T12:47:22.845272Z"
+              },
+              {
+                "author": "agent",
+                "content": {
+                  "parts": [
+                    {
+                      "text": "Your reservation has been confirmed!\n\n**Reservation Details:**\n- **Booking ID:** B-1007\n- **Venue:** Kafana Tri Mačke\n- **Time:** Friday at 21:00\n- **Party size:** 8 people\n- **Name:** Nikola\n\nEnjoy your evening in Skadarlija! Please let me know if you need anything else.",
+                      "thought_signature": "AY89a1-_g7JuhK2X6Cob_fe6O6gIXjLfW1HyfPQ9XocEapEpJ1kchKLjRISfifI1fVZHwqgX8-9pHLZ1FSh4Eoy2oEIHdutSiL5ilo2jt1eqj8bzA3M7Cgbv5QlGy2nsTXoLb-966zQo6GerxAK3JuNeXKiTbO1xXhK56_79erbdpiK8e9XnR9ghQYwglQleZ25a2SYPe41WYCC3m86e7RvS4CaEOwfc0fEU9rJbRdRD3AGNZmfw9HdtF3t8wA=="
+                    }
+                  ],
+                  "role": "model"
+                },
+                "event_time": "2026-10-04T12:47:22.845272Z"
+              }
+            ]
+          }
+        ]
+      },
+      "user_scenario": {
+        "starting_prompt": "Treba mi sto za 4 osobe u Skadarliji za petak u 20:00. Neki roštilj. Ime je Nikola.",
+        "conversation_plan": "Wait for the agent to search, check availability, restate the venue, time, and party size, and ask for confirmation. Reply 'Da, potvrđujem'. After the agent confirms the table is booked, say in English: 'Actually, cancel that booking. I want to book a table for 8 people at 21:00 instead.' After the agent cancels the previous booking, checks availability for 8, restates the new details, and asks for confirmation, reply 'Yes, confirm'."
+      }
+    }
+  ]
+}

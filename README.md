@@ -166,33 +166,7 @@ INSTRUCTION_V5 = """You are the Skadarlija Concierge, a restaurant-booking assis
 
 Evaluating agents requires a multi-layered testing strategy combining deterministic unit checks with semantic LLM judges:
 
-```mermaid
-flowchart TD
-    subgraph Dataset["Evaluation Dataset (8 Cases)"]
-        C1["Case 017: Ambiguous Party Size (INC-01)"]
-        C2["Case 005: Rooftop Hallucination (INC-02)"]
-        C3["Case 006: Weather Cancellation (INC-03)"]
-        C4["Case 004: Vegan Dietary Grounding (INC-04)"]
-        C5["Cases 001, 002, 003, 007: Happy Path & Serbian Language"]
-    end
-
-    subgraph EvaluationEngine["Hybrid Evaluation Engine"]
-        CodeMetric["Deterministic Code Metric<br><b>safe_tool_calls.py</b><br>• Party size 1-20<br>• No unsolicited cancel"]
-        LLMJudge["LLM-as-a-Judge (Vertex AI)<br><b>grounded_venues</b><br><b>same_language</b>"]
-        Builtin["ADK Multi-Turn Built-ins<br><b>task_success</b><br><b>tool_use_quality</b><br><b>trajectory_quality</b>"]
-    end
-
-    subgraph CI["Automated CI Quality Gate"]
-        Gate["scripts/eval_gate.py<br>Delta Check (--max-drop 0.05)"]
-        Exit1["Exit Code 1: REGRESSION (Blocked)"]
-        Exit0["Exit Code 0: GREEN (Passed)"]
-    end
-
-    Dataset --> EvaluationEngine
-    EvaluationEngine --> Gate
-    Gate -->|v1 → v4: Serbian Drops -0.38| Exit1
-    Gate -->|v4 → v5: Serbian Rebounds +0.38| Exit0
-```
+![Evaluation Architecture](docs/images/evaluation.png)
 
 ### 1. Deterministic Code Metric: `safe_tool_calls.py`
 Zero LLM cost, instant execution, 100% deterministic. Scans the execution trace for:

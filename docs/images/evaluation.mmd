@@ -1,0 +1,44 @@
+flowchart TD
+    subgraph Dataset["Evaluation Dataset (8 Cases)"]
+        direction LR
+        C1["Case 017: Ambiguous Party Size<br>booked 40, wrong name<br>(INC-01, INC-04)"]
+        C2["Case 005: Rooftop Bar<br>not in any search result<br>(INC-02)"]
+        C3["Case 002: Serbian 'troje'<br>booked as 0<br>(INC-03)"]
+        C4["Cases 001, 003, 004, 006, 007<br>Happy Path, Menu,<br>Weather & Serbian"]
+    end
+
+    subgraph Engine["Hybrid Evaluation Engine"]
+        direction LR
+        LLMJudge["Custom LLM Judges (Vertex AI)<br><b>grounded_venues</b><br><b>same_language</b>"]
+        Builtin["Built-in Judges (Vertex AI)<br><b>multi_turn_task_success</b><br><b>multi_turn_tool_use_quality</b><br><b>multi_turn_trajectory_quality</b>"]
+        CodeMetric["Deterministic Code Metric<br><b>safe_tool_calls.py</b><br>• Party size 1–20<br>• No unsolicited cancel"]
+    end
+
+    subgraph Gate["Automated CI Quality Gate"]
+        G["scripts/eval_gate.py<br>fails on any drop &gt; 0.05"]
+        V14["v1 → v4<br>same_language −0.38<br>trajectory −0.06"]
+        V45["v4 → v5<br>same_language +0.38<br>trajectory −0.04<br>(within the 0.05 limit)"]
+        E1["Exit 1: REGRESSION<br>(merge blocked)"]
+        E0["Exit 0: PASSED<br>(ready to ship)"]
+        G --> V14 --> E1
+        G --> V45 --> E0
+    end
+
+    Dataset --> Engine
+    Engine --> Gate
+
+    classDef case fill:#ffffff,stroke:#1a237e,stroke-width:2px,color:#1a1a2e
+    classDef engine fill:#ffffff,stroke:#004d40,stroke-width:2px,color:#1a1a2e
+    classDef gate fill:#ffffff,stroke:#e65100,stroke-width:2px,color:#1a1a2e
+    classDef comp fill:#cfd8dc,stroke:#37474f,stroke-width:1.5px,color:#1a1a2e
+    classDef fail fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#1a1a2e
+    classDef pass fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1a1a2e
+    class C1,C2,C3,C4 case
+    class LLMJudge,Builtin,CodeMetric engine
+    class G gate
+    class V14,V45 comp
+    class E1 fail
+    class E0 pass
+    style Dataset fill:#fdf0fb,stroke:#ce93d8,stroke-width:2px
+    style Engine fill:#eefbf3,stroke:#80cbc4,stroke-width:2px
+    style Gate fill:#fffbf2,stroke:#ffb74d,stroke-width:2px

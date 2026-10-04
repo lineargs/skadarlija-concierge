@@ -13,7 +13,7 @@ An end-to-end reference implementation and demonstration repository showing how 
 
 - [The Core Narrative: Moving Beyond "Vibe Checks"](#the-core-narrative-moving-beyond-vibe-checks)
 - [Agent Evolution & Git Architecture](#agent-evolution--git-architecture)
-- [The Four Real Incidents Analyzed (INC-01 to INC-04)](#the-four-real-incidents-analyzed-inc-01-to-inc-04)
+- [The Four Real Incidents Analysed (INC-01 to INC-04)](#the-four-real-incidents-analysed-inc-01-to-inc-04)
 - [Evaluation Architecture & Metric Mix](#evaluation-architecture--metric-mix)
 - [Empirical Benchmark Results & Comparison Matrix](#empirical-benchmark-results--comparison-matrix)
 - [Advanced Diagnostic Tooling](#advanced-diagnostic-tooling)
@@ -32,16 +32,16 @@ Most AI agent development relies on manual, anecdotal testing ("vibe checks"): a
 
 This repository demonstrates why vibe checks inevitably fail in production systems:
 
-1. **The Friday Afternoon Deploy (`v1-friday`)**: An enthusiastic engineer builds a restaurant concierge for Belgrade's historic Bohemian quarter, Skadarlija. It passes quick manual checks, but harbors subtle flaws in argument parsing, tool docstrings, and prompt instructions.
+1. **The Friday Afternoon Deploy (`v1-friday`)**: An enthusiastic engineer builds a restaurant concierge for Belgrade's historic Bohemian quarter, Skadarlija. It passes quick manual checks, but harbours subtle flaws in argument parsing, tool docstrings, and prompt instructions.
 2. **The Monday Morning Incidents**: Real users encounter catastrophic edge cases: a party of 4 is booked as 40 guests, a rooftop bar that never appeared in any search result is recommended anyway, a Serbian request for _troje_ (three) is booked as a table for 0 while the agent tells the guest 3, and a booking the agent says is under _Milica_ is saved as _guest_.
 3. **The "Fix" That Broke Serbian (`v4-english-only`)**: The team hardens tool parameters and adds confirmation steps, but introduces an innocent-sounding business rule: _"Write all replies in English so our support team can review transcripts."_ All Friday bugs are fixed, but the change silently breaks every Serbian user.
 4. **The Evaluation-Driven Green Gate (`v5-fixed`)**: With an automated regression gate in CI, the regression is caught before release. A one-line policy fix restores language matching, and the gate passes (exit 0).
 
-### Deterministic Evaluation & Bundled Execution Artifacts
+### Deterministic Evaluation & Bundled Execution Artefacts
 
 Running agent evaluations and LLM judges on every local clone introduces unnecessary friction for code reviewers and engineers: requiring Google Cloud project provisioning, billing setup, Vertex AI quotas, and nondeterministic API network round-trips.
 
-To make Evaluation-Driven Development (EDD) completely transparent, reproducible, and verifiable right out of the box, this repository ships with **100% authentic, pre-computed traces and evaluation grade artifacts** captured from real Gemini 3.8 Flash runs on Vertex AI. Anyone cloning the repository can immediately inspect raw JSON traces, open interactive HTML evaluation dashboards, slice performance by tags, and execute the automated regression gate in milliseconds—all locally and offline.
+To make Evaluation-Driven Development (EDD) completely transparent, reproducible, and verifiable right out of the box, this repository ships with **100% authentic, pre-computed traces and evaluation grade artefacts** captured from real Gemini 3.8 Flash runs on Vertex AI. Anyone cloning the repository can immediately inspect raw JSON traces, open interactive HTML evaluation dashboards, slice performance by tags, and execute the automated regression gate in milliseconds—all locally and offline.
 
 ---
 
@@ -112,13 +112,13 @@ INSTRUCTION_V5 = """You are the Skadarlija Concierge, a restaurant-booking assis
 
 ---
 
-## The Four Real Incidents Analyzed (INC-01 to INC-04)
+## The Four Real Incidents Analysed (INC-01 to INC-04)
 
 ### INC-01: The Table for 40 (Digit-Gluing Flaw)
 
 - **User Input**: `"Hi! We're 4, oh and 0 kids. Ćevapi tonight in Skadarlija?"` followed by `"8pm is perfect. Book it under Milica."`
-- **Agent Behavior in v1**: Because `book(n: str, ...)` asked for _"people (as the user said it)"_, the model passed `n="4, oh and 0 kids"`. The simplistic Python parser `int("".join(ch for ch in n if ch.isdigit()))` concatenated `4` and `0` into `40`.
-- **Trace Artifact (`demo/v1/traces.json`)**:
+- **Agent Behaviour in v1**: Because `book(n: str, ...)` asked for _"people (as the user said it)"_, the model passed `n="4, oh and 0 kids"`. The simplistic Python parser `int("".join(ch for ch in n if ch.isdigit()))` concatenated `4` and `0` into `40`.
+- **Trace Artefact (`demo/v1/traces.json`)**:
   ```json
   {
     "name": "book",
@@ -136,7 +136,7 @@ INSTRUCTION_V5 = """You are the Skadarlija Concierge, a restaurant-booking assis
 ### INC-02: The Hallucinated Rooftop Bar ("The View Rooftop")
 
 - **User Input**: `"Can you recommend a rooftop bar in Skadarlija for tonight?"`
-- **Agent Behavior in v1**: The database has no rooftop bars in Skadarlija (`backend.search()` returns `[]`). However, v1's instruction commanded: _"Always give the guest a great recommendation and keep them happy."_ Under pressure to recommend something, Gemini 3.8 Flash hallucinated a fictional venue named **"The View Rooftop"**.
+- **Agent Behaviour in v1**: The database has no rooftop bars in Skadarlija (`backend.search()` returns `[]`). However, v1's instruction commanded: _"Always give the guest a great recommendation and keep them happy."_ Under pressure to recommend something, Gemini 3.8 Flash hallucinated a fictional venue named **"The View Rooftop"**.
 - **Eval Verdict (`demo/v1/results.json`)**:
   ```json
   {
@@ -150,8 +150,8 @@ INSTRUCTION_V5 = """You are the Skadarlija Concierge, a restaurant-booking assis
 ### INC-03: The Table for Zero (Language Meets Digit-Gluing)
 
 - **User Input**: `"Zdravo! Treba nam sto za troje večeras u 21h, roštilj u Skadarliji. Rezervišite na ime Marko, potvrđujem."`
-- **Agent Behavior in v1**: The guest asked for _troje_ (three), written as a word. The same digit-gluing parser found no digits and booked **0** guests. The agent then told the guest the opposite of what the system did.
-- **Trace Artifact (`demo/v1/traces.json`, case `booking_sr_002`)**:
+- **Agent Behaviour in v1**: The guest asked for _troje_ (three), written as a word. The same digit-gluing parser found no digits and booked **0** guests. The agent then told the guest the opposite of what the system did.
+- **Trace Artefact (`demo/v1/traces.json`, case `booking_sr_002`)**:
   ```json
   {
     "name": "book",
@@ -172,7 +172,7 @@ INSTRUCTION_V5 = """You are the Skadarlija Concierge, a restaurant-booking assis
 ### INC-04: The Wrong Name
 
 - **User Input**: `"8pm is perfect. Book it under Milica."` (case `booking_party_size_ambiguous_017`, the same case as INC-01)
-- **Agent Behavior in v1**: `book(n, t, r)` had no name argument, so the backend saved the booking under `"guest"`. The agent replied: _"I have booked a table for you … under the name **Milica**."_
+- **Agent Behaviour in v1**: `book(n, t, r)` had no name argument, so the backend saved the booking under `"guest"`. The agent replied: _"I have booked a table for you … under the name **Milica**."_
 - **Remediation**: `book_table` takes a `guest_name` argument, and v4/v5 restate the details before booking.
 
 ### Planted but not reproduced
@@ -251,7 +251,7 @@ Running `agents-cli eval analyze --eval-result demo/v1/results.json --metric mul
 └──────────────┴────────────────────────┴───────┴────────────┴─────────────────────┘
 ```
 
-Artifact saved: [`demo/captures/analysis.json`](demo/captures/analysis.json).
+Artefact saved: [`demo/captures/analysis.json`](demo/captures/analysis.json).
 
 ---
 
@@ -263,16 +263,16 @@ Captured scenario (`demo/captures/synth.json`):
 
 - **Persona**: Belgrade guest switching between English and Serbian on a Friday evening.
 - **Starting Prompt**: `"Brate, I need a place for dinner this Friday in Skadarlija. We want some good grill."`
-- **Simulated Behavior**:
+- **Simulated Behaviour**:
   > _"When the agent suggests a restaurant from the search results, ask to check availability for 4 people at 20:00... When the agent restates details and asks for confirmation, reply in Serbian: 'Čekaj, stižu još dvoje, neka bude sto za 6 osoba u 20:30.' Once confirmed, reply 'Da, potvrđujem'."_
 
-Artifact saved: [`demo/captures/synth.json`](demo/captures/synth.json).
+Artefact saved: [`demo/captures/synth.json`](demo/captures/synth.json).
 
 ---
 
 ### Tag Slicing (`scripts/slice_by_tag.py`)
 
-Aggregate metrics hide localized failures. Tag slicing segments results across conversational dimensions:
+Aggregate metrics hide localised failures. Tag slicing segments results across conversational dimensions:
 
 ```bash
 python scripts/slice_by_tag.py demo/v1/results.json tests/eval/datasets/concierge-dataset.json multi_turn_task_success
@@ -341,7 +341,7 @@ same_language                         0.62       1.00   +0.38
 
 ## Local Inspection & Quality Gate Walkthrough
 
-You can immediately explore the evaluation artifacts, inspect real model traces, and test the CI regression gates locally using either standard CLI tools (`jq`, `python3`) or the convenience aliases in [`demo/aliases.sh`](demo/aliases.sh).
+You can immediately explore the evaluation artefacts, inspect real model traces, and test the CI regression gates locally using either standard CLI tools (`jq`, `python3`) or the convenience aliases in [`demo/aliases.sh`](demo/aliases.sh).
 
 ### Quickstart Setup
 
@@ -359,7 +359,7 @@ You can also view the pre-rendered visual dashboards by opening [`demo/v1/result
 
 The [`demo/v1/`](demo/v1/) directory contains the real traces and evaluation grades where INC-01 through INC-04 manifested.
 
-#### Inspecting the Artifacts Directory
+#### Inspecting the Artefacts Directory
 
 ```bash
 d1ls
@@ -527,6 +527,6 @@ agents-cli eval grade --traces artifacts/traces/ --output artifacts/grades/
 
 ---
 
-## License
+## Licence
 
 Apache-2.0

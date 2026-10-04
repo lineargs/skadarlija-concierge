@@ -205,7 +205,7 @@ Evaluates whether any restaurant recommended by the agent appears in a preceding
 
 Grades whether the agent responds in the language written by the user (Serbian or English). Detects language regressions when well-intentioned global prompt rules override user intent.
 
-### 4. ADK Built-In Trajectory & Tool Use Metrics
+### 4. Built-in Judge Trajectory & Tool Use Metrics
 
 - `multi_turn_task_success`: Evaluates full conversational goal completion.
 - `multi_turn_tool_use_quality`: Evaluates tool selection accuracy and argument fidelity.
@@ -215,7 +215,7 @@ Grades whether the agent responds in the language written by the user (Serbian o
 
 ## Empirical Benchmark Results & Comparison Matrix
 
-Every score below was produced by Vertex AI Evaluation Service running against real agent traces generated with Gemini 3.8 Flash.
+Every LLM-judged score below was produced by Vertex AI Evaluation Service running against real agent traces generated with Gemini 3.8 Flash (`safe_tool_calls` is evaluated locally via deterministic code).
 
 ### Full Version Comparison Matrix
 
@@ -224,9 +224,9 @@ Every score below was produced by Vertex AI Evaluation Service running against r
 | **`safe_tool_calls`**           | Deterministic Code  |  **0.75**   |     **1.00**      |     **1.00**      |      **+0.25**      | Catches INC-01 (size 40) and INC-03 (size 0) in v1.                                                                   |
 | **`grounded_venues`**           | LLM Judge           |  **0.88**   |     **1.00**      |     **1.00**      |      **+0.12**      | Catches INC-02 ("The View Rooftop" hallucination) in v1.                                                              |
 | **`same_language`**             | LLM Judge           |  **1.00**   |     **0.62**      |     **1.00**      |      **0.00**       | **Drops by -0.38 in v4**; all Serbian cases fail. Rebounds in v5.                                                     |
-| `multi_turn_task_success`       | ADK Built-in        |    0.90     |       0.88        |       0.91        |        +0.01        | High overall goal accomplishment across all versions.                                                                 |
-| `multi_turn_tool_use_quality`   | ADK Built-in        |    0.85     |       0.82        |       0.89        |        +0.04        | Tool parameter precision improves in v5.                                                                              |
-| `multi_turn_trajectory_quality` | ADK Built-in        |    0.96     |       0.90        |       0.86        |        -0.10        | Falls as fixes add a confirmation turn, which the judge counts against the route; calibrate the judge to your policy. |
+| `multi_turn_task_success`       | Built-in judge      |    0.90     |       0.88        |       0.91        |        +0.01        | High overall goal accomplishment across all versions. Note: scored INC-03 (table for zero) as 1.00.                  |
+| `multi_turn_tool_use_quality`   | Built-in judge      |    0.85     |       0.82        |       0.89        |        +0.04        | Tool parameter precision improves in v5.                                                                              |
+| `multi_turn_trajectory_quality` | Built-in judge      |    0.96     |       0.90        |       0.86        |        -0.10        | Falls as fixes add a confirmation turn, which the judge counts against the route; calibrate the judge to your policy. |
 | **CI Gate Outcome**             | Quality Gate Script |  Baseline   | **FAIL (Exit 1)** | **PASS (Exit 0)** |      **SHIP**       | Automated gate halts deploy of v4; permits v5.                                                                        |
 
 ---
@@ -297,7 +297,7 @@ Notice: In `v1`, Serbian (`lang:sr`) had 100% task success because the model had
 
 ### The CI Quality Gate (`scripts/eval_gate.py`)
 
-A readable, programmatic differential comparator that halts deployment if any metric regresses beyond `--max-drop` (default `0.05`):
+A readable, programmatic differential comparator that halts deployment if any metric regresses beyond `--max-drop` (default `0.05`). This replay runs on every pull request in [`.github/workflows/agent-eval.yaml`](.github/workflows/agent-eval.yaml), with no cloud credentials needed:
 
 #### 1. Comparing v1 to v4: Catching the Serbian Regression
 
@@ -429,15 +429,13 @@ d2gate
 ```text
 metric                            baseline  candidate   delta
 grounded_venues                       0.88       1.00   +0.12
-multi_turn_task_success_v1            0.38       0.88   +0.50
-multi_turn_tool_use_quality_v1        0.67       0.82   +0.15
-multi_turn_trajectory_quality_v1      0.65       0.90   +0.25
+multi_turn_task_success_v1            0.90       0.88   -0.02
+multi_turn_tool_use_quality_v1        0.85       0.82   -0.02
+multi_turn_trajectory_quality_v1      0.96       0.90   -0.06   REGRESSION
+  newly failing: 2 cases, tags: ambiguity, booking, lang:en, lang:sr
 safe_tool_calls                       0.75       1.00   +0.25
-same_language                         1.00       0.62   -0.38 REGRESSION
-
-EVAL GATE FAILED:
-  same_language: dropped from 1.00 to 0.62 (-0.38, max allowed: 0.05)
-  newly failing: 3 cases, tags: ['difficulty:easy', 'lang:sr', 'topic:booking', 'topic:dietary', 'topic:discovery']
+same_language                         1.00       0.62   -0.38   REGRESSION
+  newly failing: 3 cases, tags: booking, cancellation, diet, lang:sr, menu
 ```
 
 Check the process exit code:
@@ -466,8 +464,6 @@ multi_turn_tool_use_quality_v1        0.82       0.89   +0.06
 multi_turn_trajectory_quality_v1      0.90       0.86   -0.04
 safe_tool_calls                       1.00       1.00   +0.00
 same_language                         0.62       1.00   +0.38
-
-EVAL GATE PASSED
 ```
 
 Check the process exit code:
@@ -491,7 +487,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 uv tool install google-agents-cli
 
 # Clone repository & install dependencies
-git clone https://github.com/your-username/skadarlija-concierge.git
+git clone https://github.com/lineargs/skadarlija-concierge.git
 cd skadarlija-concierge
 agents-cli install
 ```

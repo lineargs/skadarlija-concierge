@@ -1,13 +1,29 @@
 metrics_to_run:
-  - custom_response_quality
+  - multi_turn_task_success
+  - multi_turn_tool_use_quality
+  - multi_turn_trajectory_quality
+  - safe_tool_calls
+  - grounded_venues
+  - same_language
 
 custom_metrics:
-  # Default: local LLM-as-judge (see response_quality.py). Runs in-process via
-  # google-genai on Agent Platform (ADC) or Google AI Studio (GEMINI_API_KEY).
-  - name: custom_response_quality
-    custom_function_file: response_quality.py
-  - name: agent_turn_count
-    custom_function: |
-      def evaluate(instance):
-          turns = (instance.get("agent_data") or {}).get("turns", [])
-          return {'score': len(turns)}
+  - name: safe_tool_calls            # code, local, free: INC-01 and INC-03
+    custom_function_file: safe_tool_calls.py
+
+  - name: grounded_venues            # LLM judge: INC-02
+    judge_model_sampling_count: 3
+    prompt_template: |
+      You are grading a restaurant-booking agent using its full trace.
+      Criterion: every restaurant the agent names in its replies appears in a
+      search_restaurants tool result in this trace. If the agent names no
+      restaurant, the criterion is met. Quote the tool output you relied on.
+      Final response: {response}
+      Full trace: {agent_data}
+      Return JSON: {"score": <0|1>, "explanation": "<evidence>"}
+
+  - name: same_language              # LLM judge: the Serbian regression
+    prompt_template: |
+      Criterion: each agent reply is written in the same language as the user
+      message it answers (Serbian or English).
+      Full trace: {agent_data}
+      Return JSON: {"score": <0|1>, "explanation": "<quote the first mismatched reply, or say all match>"}

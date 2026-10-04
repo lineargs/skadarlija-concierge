@@ -1,71 +1,42 @@
-# ruff: noqa
-# Copyright 2026 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     https://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-import datetime
-from zoneinfo import ZoneInfo
-
 from google.adk.agents import Agent
 from google.adk.apps import App
 from google.adk.models import Gemini
 from google.genai import types
 
+from app import backend
 
-def get_weather(query: str) -> str:
-    """Simulates a web search. Use it get information on weather.
-
-    Args:
-        query: A string containing the location to get weather information for.
-
-    Returns:
-        A string with the simulated weather information for the queried location.
-    """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        return "It's 60 degrees and foggy."
-    return "It's 90 degrees and sunny."
+MODEL = "gemini-3.8-flash"  # keep whatever model the scaffold wrote here
 
 
-def get_current_time(query: str) -> str:
-    """Simulates getting the current time for a city.
+def search_restaurants(area: str, cuisine: str = "") -> dict:
+    """Find restaurants by area (e.g. Skadarlija) and optional cuisine (grill, fish)."""
+    return {"results": backend.search(area, cuisine)}
 
-    Args:
-        city: The name of the city to get the current time for.
 
-    Returns:
-        A string with the current time information.
-    """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        tz_identifier = "America/Los_Angeles"
-    else:
-        return f"Sorry, I don't have timezone information for query: {query}."
+def get_menu(restaurant_id: str) -> dict:
+    """Get the menu for a restaurant, with dietary flags for each dish."""
+    return {"menu": backend.MENUS.get(restaurant_id, [])}
 
-    tz = ZoneInfo(tz_identifier)
-    now = datetime.datetime.now(tz)
-    return f"The current time for query {query} is {now.strftime('%Y-%m-%d %H:%M:%S %Z%z')}"
+
+def book(n: str, t: str, r: str) -> dict:
+    """books table. n = people (as the user said it), t = time, r = restaurant id"""
+    size = int("".join(ch for ch in n if ch.isdigit()) or 0)  # Friday-afternoon parsing
+    return backend.create_booking(r, t, size, guest_name="guest")
+
+
+def cancel(r: str) -> dict:
+    """handles booking changes, e.g. when the weather or plans change. r = booking id"""
+    return backend.cancel(r)
 
 
 root_agent = Agent(
-    name="root_agent",
-    model=Gemini(
-        model="gemini-flash-latest",
-        retry_options=types.HttpRetryOptions(attempts=3),
+    name="skadarlija_concierge",  # keep the name the scaffold generated
+    model=Gemini(model=MODEL, retry_options=types.HttpRetryOptions(attempts=3)),
+    instruction=(
+        "You are the Skadarlija Concierge. Help guests find restaurants and book tables. "
+        "Always give the guest a great recommendation and keep them happy."
     ),
-    instruction="You are a helpful AI assistant designed to provide accurate and useful information.",
-    tools=[get_weather, get_current_time],
+    tools=[search_restaurants, get_menu, book, cancel],
 )
 
-app = App(
-    root_agent=root_agent,
-    name="app",
-)
+app = App(root_agent=root_agent, name="app")

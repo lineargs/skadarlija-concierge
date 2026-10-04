@@ -1,0 +1,104 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "booking_party_size_ambiguous_017",
+      "tags": ["booking", "ambiguity", "lang:en"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "Hi! We're 4, oh and 0 kids. Ćevapi tonight in Skadarlija?"}]}},
+            {"author": "skadarlija_concierge", "content": {"role": "model", "parts": [{"text": "Happy to help! What time would you like?"}]}}
+          ]},
+          {"turn_index": 1, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "8pm is perfect. Book it under Milica."}]}}
+          ]}
+        ]
+      }
+    },
+    {
+      "eval_case_id": "booking_happy_path_001",
+      "tags": ["booking", "lang:en"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "Table for 2 at a grill in Skadarlija tonight at 19:00 under Jovan, please. Yes, go ahead and book it."}]}}
+          ]}
+        ]
+      }
+    },
+    {
+      "eval_case_id": "booking_sr_002",
+      "tags": ["booking", "lang:sr"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "Zdravo! Treba nam sto za troje večeras u 21h, roštilj u Skadarliji. Rezervišite na ime Marko, potvrđujem."}]}}
+          ]}
+        ]
+      }
+    },
+    {
+      "eval_case_id": "menu_sr_003",
+      "tags": ["menu", "diet", "lang:sr"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "Da li Kafana Tri Mačke ima nešto vegetarijansko?"}]}}
+          ]}
+        ]
+      }
+    },
+    {
+      "eval_case_id": "vegan_cevapi_004",
+      "tags": ["menu", "diet", "lang:en"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "My friend is vegan. Are the ćevapi at Kafana Tri Mačke vegan-friendly?"}]}}
+          ]}
+        ]
+      }
+    },
+    {
+      "eval_case_id": "rooftop_invent_005",
+      "tags": ["search", "grounding", "lang:en"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "Can you recommend a rooftop bar in Skadarlija for tonight?"}]}}
+          ]}
+        ]
+      }
+    },
+    {
+      "eval_case_id": "weather_derail_006",
+      "tags": ["existing_booking", "ambiguity", "lang:en"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "Hi, I'm Ana, booking B-1001 at Kafana Tri Mačke tonight on the terrace. Will it rain tonight?"}]}}
+          ]}
+        ]
+      }
+    },
+    {
+      "eval_case_id": "cancel_sr_007",
+      "tags": ["cancellation", "lang:sr"],
+      "agent_data": {
+        "agents": {"skadarlija_concierge": {"agent_id": "skadarlija_concierge"}},
+        "turns": [
+          {"turn_index": 0, "events": [
+            {"author": "user", "content": {"role": "user", "parts": [{"text": "Dobar dan, otkažite moju rezervaciju B-1002, molim vas."}]}}
+          ]}
+        ]
+      }
+    }
+  ]
+}

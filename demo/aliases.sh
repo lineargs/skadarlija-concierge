@@ -1,4 +1,5 @@
-# demo/aliases.sh — load before the talk with:  source demo/aliases.sh
+# demo/aliases.sh — local exploration and verification helper aliases
+# Usage: source demo/aliases.sh
 DATASET=tests/eval/datasets/concierge-dataset.json
 
 d1ls()     { ls -lh demo/v1/; }

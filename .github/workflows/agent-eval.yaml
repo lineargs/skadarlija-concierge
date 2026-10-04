@@ -1,0 +1,50 @@
+name: Agent eval gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  replay-gate:
+    # Replays the quality gate on the committed pre-run results (demo/v1, v4, v5).
+    # Needs no Google Cloud credentials, so it runs on every fork and pull request.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: "v1 -> v4 must FAIL: the gate has to catch the Serbian regression"
+        run: |
+          if python scripts/eval_gate.py demo/v1/results.json demo/v4/results.json \
+               --dataset tests/eval/datasets/concierge-dataset.json; then
+            echo "::error::The gate passed v4, but v4 breaks every Serbian conversation."
+            exit 1
+          fi
+
+      - name: "v4 -> v5 must PASS: the one-line fix"
+        run: |
+          python scripts/eval_gate.py demo/v4/results.json demo/v5/results.json \
+            --dataset tests/eval/datasets/concierge-dataset.json
+
+  # Live evaluation on every pull request. Enable once the repository has a Google Cloud
+  # project with Workload Identity Federation configured (secrets WIF_PROVIDER, EVAL_SA).
+  #
+  # live-eval:
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #     id-token: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: google-github-actions/auth@v2
+  #       with:
+  #         workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+  #         service_account: ${{ secrets.EVAL_SA }}
+  #     - uses: astral-sh/setup-uv@v5
+  #     - run: uv tool install google-agents-cli
+  #     - run: agents-cli eval run --dataset tests/eval/datasets/concierge-dataset.json --output out/
+  #     # eval run exits 0 whatever the scores; the gate is what fails the build.
+  #     - run: python scripts/eval_gate.py demo/v5/results.json "out/results_*.json" --max-drop 0.05

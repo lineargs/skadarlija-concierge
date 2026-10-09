@@ -4,13 +4,23 @@
 [![agents-cli](https://img.shields.io/badge/agents--cli-v1.8.0-4285F4.svg)](https://google.github.io/agents-cli/)
 [![Gemini](https://img.shields.io/badge/Model-Gemini%203.8%20Flash-orange.svg)](https://cloud.google.com/vertex-ai)
 [![Eval Gate](https://img.shields.io/badge/CI%20Gate-Automated%20Regression%20Gate-green.svg)](scripts/eval_gate.py)
+[![Slides](https://img.shields.io/badge/Slides-Speaker%20Deck-009287.svg)](https://speakerdeck.com/lineargs/mastering-agent-evaluation-benchmark-grade-and-optimise-with-agents-cli)
 
 An end-to-end reference implementation and demonstration repository showing how to apply **Evaluation-Driven Development (EDD)** and **Automated Quality Gating** to generative AI agents built with the **Google Agent Development Kit (ADK)** and the **Agent Platform CLI (`agents-cli`)**.
+
+## Presentation Slides
+
+[![Mastering Agent Evaluation: Benchmark, Grade, and Optimise with agents-cli](https://files.speakerdeck.com/presentations/6ea62075b5624128bcbb443c5e2c3da1/slide_0.jpg)](https://speakerdeck.com/lineargs/mastering-agent-evaluation-benchmark-grade-and-optimise-with-agents-cli)
+
+<p align="center">
+  <em>Click the slide above to view the full <strong>DevFest Belgrade 2026</strong> deck on <a href="https://speakerdeck.com/lineargs/mastering-agent-evaluation-benchmark-grade-and-optimise-with-agents-cli">Speaker Deck</a>.</em>
+</p>
 
 ---
 
 ## Table of Contents
 
+- [Presentation Slides](#presentation-slides)
 - [The Core Narrative: Moving Beyond "Vibe Checks"](#the-core-narrative-moving-beyond-vibe-checks)
 - [Agent Evolution & Git Architecture](#agent-evolution--git-architecture)
 - [The Four Real Incidents Analysed (INC-01 to INC-04)](#the-four-real-incidents-analysed-inc-01-to-inc-04)
